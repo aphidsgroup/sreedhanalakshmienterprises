@@ -41,7 +41,10 @@ async function getSteelData() {
   if (!category) return { products: [], faqs: [], updatedAt: null };
   const products = await prisma.product.findMany({
     where: { categoryId: category.id, isActive: true },
-    include: { brand: { select: { name: true } } },
+    include: { 
+      brand: { select: { name: true } },
+      images: { where: { isPrimary: true }, take: 1 }
+    },
     orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
   });
   const faqs = await prisma.fAQ.findMany({ where: { categoryId: category.id, isActive: true }, orderBy: { sortOrder: "asc" } });
@@ -103,7 +106,7 @@ export default async function SteelPricePage() {
                     unit={p.unit}
                     price={p.currentPrice ? Number(p.currentPrice) : null}
                     remarks={p.remarks || undefined}
-                    imageUrl={getProductImage(p.slug, "steel")}
+                    imageUrl={p.images?.[0]?.secureUrl || getProductImage(p.slug, "steel")}
                   />
                 ))
               : FALLBACK_STEEL.map((p, i) => {

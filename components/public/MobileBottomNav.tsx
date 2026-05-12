@@ -19,14 +19,6 @@ export default function MobileBottomNav() {
           <Home size={22} className={pathname === "/" ? "fill-current" : ""} />
           <span className="text-[10px] font-semibold">Home</span>
         </Link>
-        
-        <Link 
-          href="/products" 
-          className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${pathname?.startsWith("/products") ? "text-[#2b7a8c]" : "text-[#64748b]"}`}
-        >
-          <Package size={22} className={pathname?.startsWith("/products") ? "fill-current" : ""} />
-          <span className="text-[10px] font-semibold">Products</span>
-        </Link>
 
         <Link 
           href="/contact" 

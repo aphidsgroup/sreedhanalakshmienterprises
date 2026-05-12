@@ -37,7 +37,14 @@ const FAQS = [
 async function getData() {
   const category = await prisma.category.findUnique({ where: { slug: "bricks-and-blocks" } });
   if (!category) return { products: [], faqs: [], updatedAt: null };
-  const products = await prisma.product.findMany({ where: { categoryId: category.id, isActive: true }, include: { brand: { select: { name: true } } }, orderBy: [{ displayOrder: "asc" }] });
+  const products = await prisma.product.findMany({ 
+    where: { categoryId: category.id, isActive: true }, 
+    include: { 
+      brand: { select: { name: true } },
+      images: { where: { isPrimary: true }, take: 1 }
+    }, 
+    orderBy: [{ displayOrder: "asc" }] 
+  });
   const faqs = await prisma.fAQ.findMany({ where: { categoryId: category.id, isActive: true }, orderBy: { sortOrder: "asc" } });
   const updatedAt = products.reduce((l, p) => p.lastUpdated > l ? p.lastUpdated : l, new Date(0));
   return { products, faqs, updatedAt: products.length ? updatedAt : null };
@@ -91,7 +98,7 @@ export default async function BricksBlocksPricePage() {
                     unit={p.unit}
                     price={p.currentPrice ? Number(p.currentPrice) : null}
                     remarks={p.remarks || undefined}
-                    imageUrl={getProductImage(p.slug, "bricks-and-blocks")}
+                    imageUrl={p.images?.[0]?.secureUrl || getProductImage(p.slug, "bricks-and-blocks")}
                   />
                 ))
               : FALLBACK.map((p, i) => {

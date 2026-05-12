@@ -37,6 +37,20 @@ export async function POST(req: NextRequest) {
       isFeatured: body.isFeatured ?? false,
       isActive: body.isActive ?? true,
       lastUpdated: new Date(),
+      ...(body.imagePublicId && body.imageSecureUrl
+        ? {
+            images: {
+              create: {
+                publicId: body.imagePublicId,
+                secureUrl: body.imageSecureUrl,
+                isPrimary: true,
+              },
+            },
+          }
+        : {}),
+    },
+    include: {
+      images: true,
     },
   });
   return NextResponse.json(product, { status: 201 });

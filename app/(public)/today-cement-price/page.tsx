@@ -24,7 +24,10 @@ async function getCementData() {
   if (!category) return { products: [], updatedAt: null };
   const products = await prisma.product.findMany({
     where: { categoryId: category.id, isActive: true },
-    include: { brand: { select: { name: true } } },
+    include: { 
+      brand: { select: { name: true } },
+      images: { where: { isPrimary: true }, take: 1 }
+    },
     orderBy: [{ displayOrder: "asc" }, { name: "asc" }],
   });
   const faqs = await prisma.fAQ.findMany({
@@ -123,7 +126,7 @@ export default async function CementPricePage() {
                     unit={p.unit}
                     price={p.currentPrice ? Number(p.currentPrice) : null}
                     remarks={p.remarks || undefined}
-                    imageUrl={getProductImage(p.slug, "cement")}
+                    imageUrl={p.images?.[0]?.secureUrl || getProductImage(p.slug, "cement")}
                   />
                 ))
               : FALLBACK_CEMENT.map((p, i) => {

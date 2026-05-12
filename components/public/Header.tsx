@@ -9,16 +9,6 @@ import WhatsAppIcon from "./WhatsAppIcon";
 const nav = [
   { label: "Home", href: "/" },
   {
-    label: "Products",
-    href: "/products",
-    children: [
-      { label: "Cement", href: "/products/cement" },
-      { label: "Steel / TMT Bars", href: "/products/steel" },
-      { label: "Bricks & Blocks", href: "/products/bricks-and-blocks" },
-      { label: "Sand & Aggregates", href: "/products/sand-and-aggregates" },
-    ],
-  },
-  {
     label: "Today's Prices",
     href: "#",
     children: [

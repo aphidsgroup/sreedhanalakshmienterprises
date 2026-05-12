@@ -20,18 +20,32 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ id: st
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const body = await req.json();
+  const { imagePublicId, imageSecureUrl, currentPrice, priceNote, ...restBody } = body;
   const oldProduct = await prisma.product.findUnique({ where: { id } });
+  
+  // Handle image update if provided
+  const imageUpdate = imagePublicId && imageSecureUrl ? {
+    images: {
+      deleteMany: {}, // Clear old images
+      create: {
+        publicId: imagePublicId,
+        secureUrl: imageSecureUrl,
+        isPrimary: true,
+      }
+    }
+  } : {};
+
   const product = await prisma.product.update({
     where: { id },
-    data: { ...body, lastUpdated: new Date() },
+    data: { ...restBody, currentPrice, ...imageUpdate, lastUpdated: new Date() },
   });
   // Log price history if price changed
-  if (body.currentPrice && oldProduct?.currentPrice !== body.currentPrice) {
+  if (currentPrice !== undefined && oldProduct?.currentPrice !== currentPrice) {
     await prisma.priceHistory.create({
       data: {
         productId: id,
-        price: body.currentPrice,
-        note: body.priceNote || "Price updated",
+        price: currentPrice,
+        note: priceNote || "Price updated",
       },
     });
   }
