@@ -25,6 +25,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Sree Dhanalakshmi Enterprises",
+    images: [
+      {
+        url: "/logo.jpeg",
+        width: 800,
+        height: 800,
+        alt: "Sree Dhanalakshmi Enterprises Logo",
+      },
+    ],
   },
 };
 

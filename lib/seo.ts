@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-const BASE_URL = process.env.NEXTAUTH_URL || "https://sreeDhanalakshmiEnterprises.com";
+const BASE_URL = process.env.NEXTAUTH_URL || "https://sree-enterprises.vercel.app";
 
 export function buildMetadata({
   title,
@@ -15,6 +15,8 @@ export function buildMetadata({
 }): Metadata {
   const fullTitle = `${title} | Sree Dhanalakshmi Enterprises`;
   const url = `${BASE_URL}${path}`;
+  const ogImage = "/logo.jpeg";
+
   return {
     title: fullTitle,
     description,
@@ -26,6 +28,20 @@ export function buildMetadata({
       siteName: "Sree Dhanalakshmi Enterprises",
       type: "website",
       locale: "en_IN",
+      images: [
+        {
+          url: ogImage,
+          width: 800,
+          height: 800,
+          alt: "Sree Dhanalakshmi Enterprises Logo",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: fullTitle,
+      description,
+      images: [ogImage],
     },
     alternates: { canonical: url },
     metadataBase: new URL(BASE_URL),
