@@ -2,7 +2,7 @@ import { Bell, ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
-  user: { name?: string | null; email?: string | null };
+  user?: { name?: string | null; email?: string | null } | null;
 }
 
 export default function AdminTopBar({ user }: Props) {
