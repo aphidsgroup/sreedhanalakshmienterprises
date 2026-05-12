@@ -65,7 +65,7 @@ export default function MobileBottomNav() {
 
         {/* Bottom Bar */}
         <div className="bg-white border-t border-[#e2eaed] shadow-[0_-4px_10px_rgba(0,0,0,0.05)] relative flex items-center h-16 pb-safe px-2">
-          <div className="flex-1 flex justify-around items-center h-full pr-16">
+          <div className="flex-1 flex justify-around items-center h-full">
             <Link 
               href="/" 
               className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${pathname === "/" ? "text-[#2b7a8c]" : "text-[#64748b]"}`}
@@ -85,20 +85,16 @@ export default function MobileBottomNav() {
                 Prices <ChevronUp size={10} className={`transition-transform duration-300 ${showMenu ? "rotate-180" : ""}`} />
               </span>
             </button>
-          </div>
 
-          {/* Floating WhatsApp Button */}
-          <div className="absolute right-4 -top-6 flex flex-col items-center">
             <a 
               href={`https://wa.me/${BUSINESS.whatsapp}?text=Hi, I would like to know more about your products.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center shadow-[0_4px_12px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-transform"
-              aria-label="Chat on WhatsApp"
+              className="flex flex-col items-center justify-center w-full h-full space-y-1 text-[#25d366]"
             >
-              <WhatsAppIcon size={28} />
+              <WhatsAppIcon size={24} />
+              <span className="text-[10px] font-semibold text-[#128c7e]">WhatsApp</span>
             </a>
-            <span className="text-[10px] font-semibold text-[#128c7e] mt-1 hidden sm:block">WhatsApp</span>
           </div>
         </div>
       </div>
