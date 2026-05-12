@@ -3,7 +3,7 @@ export const BUSINESS = {
   name: "Sree Dhanalakshmi Enterprises",
   shortName: "SDE Enterprises",
   tagline: "Delivering quality, Building trust",
-  email: "sdenterprise09@gmail.com",
+  email: "",
   whatsapp: "919094779299",
   whatsappDisplay: "90947 79299",
   established: "1980",

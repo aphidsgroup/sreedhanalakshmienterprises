@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -109,7 +110,7 @@ export default function Header() {
             className="btn-primary text-sm py-2 px-4"
             style={{ background: "#25d366" }}
           >
-            WhatsApp Us
+            <WhatsAppIcon size={14} /> WhatsApp Us
           </a>
           <a href={BUSINESS.branches[0].phone1Href} className="btn-outline text-sm py-2 px-4">
             <Phone size={14} /> Call Now
@@ -159,7 +160,7 @@ export default function Header() {
               <Phone size={14} /> Call
             </a>
             <a href={`https://wa.me/${BUSINESS.whatsapp}`} target="_blank" className="btn-primary text-sm flex-1 justify-center" style={{ background: "#25d366" }}>
-              WhatsApp
+              <WhatsAppIcon size={14} /> WhatsApp
             </a>
           </div>
         </div>

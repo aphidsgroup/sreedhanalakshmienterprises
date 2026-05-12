@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { BUSINESS } from "@/lib/constants";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -25,7 +26,7 @@ export default function Footer() {
               className="btn-primary px-6 py-3"
               style={{ background: "#25d366", fontSize: "0.95rem" }}
             >
-              <MessageCircle size={16} /> WhatsApp Quote
+              <WhatsAppIcon size={16} /> WhatsApp Quote
             </a>
             <a href={BUSINESS.branches[0].phone1Href} className="btn-outline px-6 py-3" style={{ borderColor: "#fff", color: "#fff", fontSize: "0.95rem" }}>
               <Phone size={16} /> Call Now
@@ -47,9 +48,7 @@ export default function Footer() {
           <p style={{ fontSize: "0.88rem", lineHeight: 1.7 }}>
             Trusted construction material supplier in Chennai since 1980. Serving contractors, builders, and homeowners across Tamil Nadu.
           </p>
-          <a href={`mailto:${BUSINESS.email}`} className="flex items-center gap-2 mt-4 text-sm hover:text-[#2b7a8c] transition-colors">
-            <Mail size={14} /> {BUSINESS.email}
-          </a>
+
         </div>
 
         {/* Quick Links */}
@@ -120,7 +119,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }} className="py-5 px-4 text-center text-xs">
         <p style={{ color: "#64748b" }}>
-          © {year} Sree Dhanalakshmi Enterprises. All rights reserved. &nbsp;|&nbsp;
+          © {year}Sree Dhanalakshmi Enterprises. All rights reserved. &nbsp;|&nbsp;
           <Link href="/privacy-policy" className="hover:text-[#3d9aaf]">Privacy Policy</Link> &nbsp;|&nbsp;
           <Link href="/terms" className="hover:text-[#3d9aaf]">Terms</Link>
         </p>

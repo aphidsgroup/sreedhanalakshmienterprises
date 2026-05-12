@@ -1,6 +1,6 @@
 import { buildMetadata } from "@/lib/seo";
 import { BUSINESS } from "@/lib/constants";
-import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
 import WhatsAppIcon from "@/components/public/WhatsAppIcon";
 import type { Metadata } from "next";
 
@@ -84,10 +84,7 @@ export default function ContactPage() {
                   <Clock size={15} style={{ color: "#2b7a8c" }} />
                   <span style={{ fontSize: "0.9rem", color: "#4a5568" }}>Sunday: Closed</span>
                 </div>
-                <div className="flex items-center gap-3 mt-3">
-                  <Mail size={15} style={{ color: "#2b7a8c" }} />
-                  <a href={`mailto:${BUSINESS.email}`} style={{ fontSize: "0.9rem", color: "#2b7a8c" }}>{BUSINESS.email}</a>
-                </div>
+
               </div>
             </div>
           </div>
