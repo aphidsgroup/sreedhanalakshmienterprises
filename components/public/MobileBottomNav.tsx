@@ -92,7 +92,7 @@ export default function MobileBottomNav() {
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center w-full h-full space-y-1 text-[#25d366]"
             >
-              <WhatsAppIcon size={24} />
+              <WhatsAppIcon size={24} variant="green" />
               <span className="text-[10px] font-semibold text-[#128c7e]">WhatsApp</span>
             </a>
           </div>
