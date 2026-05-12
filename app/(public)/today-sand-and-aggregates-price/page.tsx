@@ -4,6 +4,8 @@ import { formatPrice, formatDateTime } from "@/lib/utils";
 import { buildMetadata } from "@/lib/seo";
 import { TrendingUp, Phone, ArrowRight, AlertCircle } from "lucide-react";
 import WhatsAppIcon from "@/components/public/WhatsAppIcon";
+import ProductCard from "@/components/public/ProductCard";
+import { getProductImage } from "@/lib/productImages";
 import { BUSINESS } from "@/lib/constants";
 import type { Metadata } from "next";
 
@@ -74,37 +76,40 @@ export default async function SandAggregatesPricePage() {
           <a href={BUSINESS.branches[0].phone1Href} className="btn-outline px-6 py-3"><Phone size={16} /> Call {BUSINESS.branches[0].phone1}</a>
         </div>
 
-        <div className="sde-card overflow-hidden mb-10">
-          <div className="px-5 py-4 border-b border-[#e2eaed]" style={{ background: "#f0f4f6" }}>
-            <h2 style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, fontSize: "1.1rem", color: "#1a2129" }}>
-              Sand &amp; Aggregates Price List — Chennai ({new Date().toLocaleDateString("en-IN", { day: "2-digit", month: "long", year: "numeric" })})
+        <div className="mb-10">
+          <div className="flex justify-between items-end border-b border-[#e2eaed] pb-4 mb-6">
+            <h2 style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, fontSize: "1.25rem", color: "#1a2129" }}>
+              Sand &amp; Aggregates Price List
             </h2>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full data-table">
-              <thead><tr><th className="text-left">Material</th><th className="text-left">Grade / Spec</th><th className="text-left">Unit</th><th className="text-right">Price (₹)</th><th className="text-left">Usage</th></tr></thead>
-              <tbody>
-                {hasData
-                  ? products.map((p) => (
-                      <tr key={p.id}>
-                        <td className="font-semibold">{p.brand?.name || p.name}</td>
-                        <td style={{ color: "#4a5568" }}>{p.specification || "—"}</td>
-                        <td>{p.unit}</td>
-                        <td className="text-right font-bold" style={{ color: "#2b7a8c" }}>{p.currentPrice ? formatPrice(Number(p.currentPrice)) : "On Request"}</td>
-                        <td style={{ color: "#64748b", fontSize: "0.85rem" }}>{p.remarks || "—"}</td>
-                      </tr>
-                    ))
-                  : FALLBACK.map((p, i) => (
-                      <tr key={i}>
-                        <td className="font-semibold">{p.brand}</td>
-                        <td style={{ color: "#4a5568" }}>{p.spec}</td>
-                        <td>{p.unit}</td>
-                        <td className="text-right font-bold" style={{ color: "#2b7a8c" }}>{p.price}</td>
-                        <td style={{ color: "#64748b", fontSize: "0.85rem" }}>{p.remarks}</td>
-                      </tr>
-                    ))}
-              </tbody>
-            </table>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            {hasData
+              ? products.map((p) => (
+                  <ProductCard
+                    key={p.id}
+                    name={p.name}
+                    brand={p.brand?.name}
+                    specification={p.specification || undefined}
+                    unit={p.unit}
+                    price={p.currentPrice ? Number(p.currentPrice) : null}
+                    remarks={p.remarks || undefined}
+                    imageUrl={getProductImage(p.slug, "sand-and-aggregates")}
+                  />
+                ))
+              : FALLBACK.map((p, i) => {
+                  const tempSlug = p.brand.toLowerCase().replace(/[\s()]/g, "-").replace(/-+/g, "-");
+                  return (
+                    <ProductCard
+                      key={i}
+                      name={p.brand}
+                      specification={p.spec}
+                      unit={p.unit}
+                      price={p.price}
+                      remarks={p.remarks}
+                      imageUrl={getProductImage(tempSlug, "sand-and-aggregates")}
+                    />
+                  );
+                })}
           </div>
         </div>
 

@@ -8,7 +8,7 @@ export default function WhatsAppFloat() {
       href={`https://wa.me/${BUSINESS.whatsapp}?text=Hi SDE Enterprises, I need construction materials. Can you help?`}
       target="_blank"
       rel="noopener noreferrer"
-      className="whatsapp-float"
+      className="whatsapp-float hidden md:flex"
       aria-label="Chat on WhatsApp"
     >
       <WhatsAppIcon size={28} />

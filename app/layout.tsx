@@ -6,6 +6,13 @@ import Providers from "@/components/Providers";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
+export const viewport = {
+  themeColor: "#1e5f6e",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "Sree Dhanalakshmi Enterprises | Construction Materials Supplier Chennai",
   description:
@@ -24,6 +31,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <head>
+        <link rel="manifest" href="/manifest.ts" />
+        <link rel="apple-touch-icon" href="/icon.png" />
+      </head>
       <body className="font-sans antialiased">
         <Providers>{children}</Providers>
       </body>
