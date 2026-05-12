@@ -49,49 +49,62 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
   const whatsappHref = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="bg-white rounded-lg overflow-hidden flex flex-col h-full" style={{ border: "1px solid #e2eaed", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+    <div className="bg-white rounded-lg overflow-hidden flex flex-col h-full" style={{ border: "1px solid #eaeaea", boxShadow: "0 2px 10px rgba(0,0,0,0.03)" }}>
       {/* Header */}
-      <div className="flex items-center gap-4 p-4 border-b border-[#e2eaed]">
-        <div className="relative w-16 h-12 flex-shrink-0 bg-white flex items-center justify-center">
-          <Image 
-            src={resolvedLogoUrl} 
-            alt={`${brandName} Logo`} 
-            fill 
-            className="object-contain" 
-            sizes="64px"
-          />
-        </div>
-        <h3 className="font-bold text-[#1a2129] uppercase text-sm leading-snug">
+      <div className="flex items-center gap-4 p-4 border-b border-[#eaeaea]">
+        {resolvedLogoUrl && (
+          <div className="relative w-14 h-10 flex-shrink-0 bg-white flex items-center justify-center rounded">
+            <Image 
+              src={resolvedLogoUrl} 
+              alt={`${brandName} Logo`} 
+              fill 
+              className="object-contain" 
+              sizes="56px"
+            />
+          </div>
+        )}
+        <h3 className="font-bold text-[#333333] uppercase text-sm tracking-wide leading-snug">
           {brandName} {categoryName} TODAY PRICE IN CHENNAI
         </h3>
       </div>
 
       {/* Product List */}
-      <div className="flex-grow p-4 flex flex-col gap-3">
-        {products.map((product, idx) => (
-          <div key={product.id || idx} className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0 last:pb-0">
-            <div className="flex-1 pr-4">
-              <p className="text-xs font-semibold text-[#4a5568]">
-                {product.name} {product.specification ? `- ${product.specification}` : ""}
-              </p>
+      <div className="flex-grow p-4 flex flex-col gap-0">
+        {products.map((product, idx) => {
+          // Check if price exists and is not 0
+          const hasPrice = product.currentPrice && Number(product.currentPrice) > 0;
+          
+          return (
+            <div key={product.id || idx} className="flex justify-between items-center py-3 border-b border-[#f5f5f5] last:border-0">
+              <div className="flex-1 pr-4">
+                <p className="text-[13px] font-semibold text-[#444444]">
+                  {product.name} {product.specification ? `- ${product.specification}` : ""}
+                </p>
+              </div>
+              <div className="flex-shrink-0">
+                {hasPrice ? (
+                  <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#eef8f2", color: "#3BB77E" }}>
+                    Rs. {typeof product.currentPrice === "number" ? product.currentPrice.toFixed(2) : Number(product.currentPrice).toFixed(2)}
+                  </span>
+                ) : (
+                  <span className="text-xs font-bold px-3 py-1.5 rounded italic" style={{ backgroundColor: "#f1f1f1", color: "#888888" }}>
+                    Nil
+                  </span>
+                )}
+              </div>
             </div>
-            <div className="flex-shrink-0">
-              <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#e8f5ee", color: "#3Ea072" }}>
-                Rs. {product.currentPrice ? (typeof product.currentPrice === "number" ? product.currentPrice.toFixed(2) : product.currentPrice) : "On Request"}
-              </span>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Footer Button */}
-      <div className="p-3 mt-auto">
+      <div className="p-4 pt-2 mt-auto">
         <a 
           href={whatsappHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full flex items-center justify-center py-3 rounded text-sm font-bold text-white transition-opacity hover:opacity-90 tracking-wide"
-          style={{ backgroundColor: "#3Ea072" }}
+          className="w-full flex items-center justify-center py-3 rounded text-sm font-bold text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: "#3BB77E" }}
         >
           SHOP NOW
         </a>
