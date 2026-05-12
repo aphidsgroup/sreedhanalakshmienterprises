@@ -19,6 +19,8 @@ interface Product {
   category: { name: string };
   brand?: { name: string };
   images: ProductImage[];
+  isFeatured: boolean;
+  displayOrder: number;
 }
 
 export default function AdminProductsPage() {
@@ -44,7 +46,9 @@ export default function AdminProductsPage() {
       fetch("/api/categories"),
       fetch("/api/brands")
     ]);
-    setProducts(await prodRes.json());
+    const prodData = await prodRes.json();
+    // Sort by displayOrder then category then name
+    setProducts(prodData);
     setCategories(await catRes.json());
     setBrands(await brandRes.json());
     setLoading(false);
@@ -62,7 +66,7 @@ export default function AdminProductsPage() {
       setCurrentProduct(product);
       setImagePreview(product.images?.[0]?.secureUrl || null);
     } else {
-      setCurrentProduct({ unit: "bag" });
+      setCurrentProduct({ unit: "bag", isFeatured: false, displayOrder: 0 });
       setImagePreview(null);
     }
     setSelectedImageFile(null);
@@ -102,6 +106,8 @@ export default function AdminProductsPage() {
       const payload = {
         ...currentProduct,
         currentPrice: currentProduct?.currentPrice ? Number(currentProduct.currentPrice) : null,
+        displayOrder: Number(currentProduct?.displayOrder || 0),
+        isFeatured: Boolean(currentProduct?.isFeatured),
         slug: currentProduct?.slug || currentProduct?.name?.toLowerCase().replace(/ /g, "-"),
         imagePublicId,
         imageSecureUrl
@@ -135,7 +141,7 @@ export default function AdminProductsPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, fontSize: "1.5rem", color: "#1a2129" }}>Products CMS</h1>
-          <p style={{ color: "#64748b", fontSize: "0.875rem" }}>Manage products and upload images.</p>
+          <p style={{ color: "#64748b", fontSize: "0.875rem" }}>Manage products, upload images, and control homepage display.</p>
         </div>
         <button onClick={() => handleOpenModal()} className="btn-primary px-4 py-2 text-sm flex items-center gap-2">
           <Plus size={16} /> Add Product
@@ -168,14 +174,16 @@ export default function AdminProductsPage() {
           <thead>
             <tr>
               <th className="w-16">Image</th>
+              <th>Order</th>
               <th>Product / Brand</th>
               <th>Category</th>
+              <th>Featured</th>
               <th>Price</th>
               <th className="text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {loading ? <tr><td colSpan={5} className="text-center py-8">Loading...</td></tr> : filtered.map((p) => (
+            {loading ? <tr><td colSpan={7} className="text-center py-8">Loading...</td></tr> : filtered.map((p) => (
               <tr key={p.id}>
                 <td>
                   <div className="w-10 h-10 rounded border bg-gray-50 flex items-center justify-center overflow-hidden">
@@ -185,11 +193,19 @@ export default function AdminProductsPage() {
                     ) : <ImageIcon size={16} className="text-gray-400" />}
                   </div>
                 </td>
+                <td className="font-semibold text-gray-600">#{p.displayOrder}</td>
                 <td>
                   <div className="font-semibold text-gray-900">{p.name}</div>
                   <div className="text-xs text-gray-500">{p.brand?.name}</div>
                 </td>
                 <td><span className="badge-primary">{p.category.name}</span></td>
+                <td>
+                  {p.isFeatured ? (
+                    <span className="badge-accent text-[10px]">Homepage</span>
+                  ) : (
+                    <span className="text-gray-400 text-xs">—</span>
+                  )}
+                </td>
                 <td className="font-medium text-[#2b7a8c]">{p.currentPrice ? formatPrice(p.currentPrice) : "—"}</td>
                 <td>
                   <div className="flex gap-2 justify-end">
@@ -250,6 +266,25 @@ export default function AdminProductsPage() {
                     <input type="number" step="0.01" value={currentProduct?.currentPrice || ""} onChange={e => setCurrentProduct({...currentProduct, currentPrice: e.target.value ? Number(e.target.value) : undefined})} className="w-full border rounded-lg px-3 py-2 outline-none text-sm" />
                   </div>
                   <div>
+                    <label className="block text-sm font-semibold mb-1">Display Order (Lower first)</label>
+                    <input type="number" value={currentProduct?.displayOrder ?? 0} onChange={e => setCurrentProduct({...currentProduct, displayOrder: Number(e.target.value)})} className="w-full border rounded-lg px-3 py-2 outline-none text-sm" />
+                  </div>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-semibold mb-1 text-gray-500">Homepage Visibility</label>
+                    <div className="flex items-center gap-2 mt-2">
+                      <input 
+                        type="checkbox" 
+                        id="isFeatured"
+                        checked={currentProduct?.isFeatured || false} 
+                        onChange={e => setCurrentProduct({...currentProduct, isFeatured: e.target.checked})}
+                        className="w-4 h-4 rounded border-gray-300 text-[#2b7a8c] focus:ring-[#2b7a8c]"
+                      />
+                      <label htmlFor="isFeatured" className="text-sm font-medium text-gray-700 select-none">
+                        Show in &quot;Today&apos;s Material Prices&quot; section on Homepage
+                      </label>
+                    </div>
+                  </div>
+                  <div className="md:col-span-2">
                     <label className="block text-sm font-semibold mb-1">Remarks</label>
                     <input value={currentProduct?.remarks || ""} onChange={e => setCurrentProduct({...currentProduct, remarks: e.target.value})} className="w-full border rounded-lg px-3 py-2 outline-none text-sm" />
                   </div>

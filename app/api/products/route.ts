@@ -31,6 +31,7 @@ export async function POST(req: NextRequest) {
       specification: body.specification,
       unit: body.unit,
       currentPrice: body.currentPrice,
+      displayOrder: Number(body.displayOrder || 0),
       remarks: body.remarks,
       categoryId: body.categoryId,
       brandId: body.brandId || null,
