@@ -1,0 +1,224 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Settings {
+  id                String   @id @default(cuid())
+  key               String   @unique
+  value             String
+  label             String?
+  type              String   @default("text")
+  updatedAt         DateTime @updatedAt
+}
+
+model Branch {
+  id        String   @id @default(cuid())
+  name      String
+  address   String
+  city      String   @default("Chennai")
+  state     String   @default("Tamil Nadu")
+  pincode   String
+  phone1    String
+  phone2    String?
+  whatsapp  String?
+  isPrimary Boolean  @default(false)
+  isActive  Boolean  @default(true)
+  mapUrl    String?
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  icon        String?
+  imageUrl    String?
+  sortOrder   Int       @default(0)
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  brands      Brand[]
+  products    Product[]
+  faqs        FAQ[]
+  seoMeta     SeoMeta?
+}
+
+model Brand {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  logoUrl     String?
+  description String?
+  isActive    Boolean   @default(true)
+  sortOrder   Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  category    Category  @relation(fields: [categoryId], references: [id])
+  categoryId  String
+  products    Product[]
+}
+
+model Product {
+  id            String         @id @default(cuid())
+  name          String
+  slug          String         @unique
+  specification String?
+  unit          String         @default("bag")
+  currentPrice  Decimal?       @db.Decimal(10, 2)
+  oldPrice      Decimal?       @db.Decimal(10, 2)
+  remarks       String?
+  stockStatus   String         @default("in_stock")
+  isFeatured    Boolean        @default(false)
+  isActive      Boolean        @default(true)
+  displayOrder  Int            @default(0)
+  lastUpdated   DateTime       @default(now())
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  category      Category       @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  brand         Brand?         @relation(fields: [brandId], references: [id])
+  brandId       String?
+  images        ProductImage[]
+  priceHistory  PriceHistory[]
+}
+
+model ProductImage {
+  id          String   @id @default(cuid())
+  publicId    String
+  secureUrl   String
+  altText     String?
+  width       Int?
+  height      Int?
+  isPrimary   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId   String
+}
+
+model PriceHistory {
+  id            String   @id @default(cuid())
+  price         Decimal  @db.Decimal(10, 2)
+  effectiveDate DateTime @default(now())
+  note          String?
+  createdAt     DateTime @default(now())
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId     String
+}
+
+model FAQ {
+  id         String   @id @default(cuid())
+  question   String
+  answer     String
+  page       String   @default("general")
+  sortOrder  Int      @default(0)
+  isActive   Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  company     String?
+  role        String?
+  content     String
+  rating      Int      @default(5)
+  avatarUrl   String?
+  isActive    Boolean  @default(true)
+  isFeatured  Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ServiceArea {
+  id        String   @id @default(cuid())
+  name      String
+  district  String?
+  state     String   @default("Tamil Nadu")
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MediaAsset {
+  id        String   @id @default(cuid())
+  publicId  String   @unique
+  secureUrl String
+  altText   String?
+  folder    String?
+  width     Int?
+  height    Int?
+  format    String?
+  bytes     Int?
+  tags      String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SeoMeta {
+  id               String   @id @default(cuid())
+  page             String   @unique
+  title            String
+  description      String
+  keywords         String?
+  ogTitle          String?
+  ogDescription    String?
+  ogImageUrl       String?
+  canonicalUrl     String?
+  structuredData   String?
+  updatedAt        DateTime @updatedAt
+  category         Category? @relation(fields: [categoryId], references: [id])
+  categoryId       String?   @unique
+}
+
+model ContentBlock {
+  id        String   @id @default(cuid())
+  page      String
+  section   String
+  title     String?
+  subtitle  String?
+  body      String?
+  imageUrl  String?
+  ctaText   String?
+  ctaUrl    String?
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Enquiry {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String?
+  message   String?
+  product   String?
+  quantity  String?
+  branch    String?
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
