@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import { BUSINESS } from "@/lib/constants";
+import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function WhatsAppFloat() {
   return (
@@ -11,14 +11,7 @@ export default function WhatsAppFloat() {
       className="whatsapp-float"
       aria-label="Chat on WhatsApp"
     >
-      <div className="relative w-7 h-7">
-        <Image
-          src="/whatsapp-white-icon.png"
-          alt="WhatsApp"
-          fill
-          className="object-contain"
-        />
-      </div>
+      <WhatsAppIcon size={28} />
     </a>
   );
 }

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
-import { Phone, MessageCircle, TrendingUp, Shield, Truck, Clock, ArrowRight, Star, CheckCircle2 } from "lucide-react";
+import { Phone, TrendingUp, Shield, Truck, Clock, ArrowRight, Star, CheckCircle2 } from "lucide-react";
+import WhatsAppIcon from "@/components/public/WhatsAppIcon";
 import { BUSINESS, CATEGORIES, TRUSTED_CLIENTS, SERVICE_AREAS } from "@/lib/constants";
 import { formatPrice, formatDateTime } from "@/lib/utils";
 import { buildMetadata } from "@/lib/seo";
@@ -89,7 +90,7 @@ export default async function HomePage() {
                   className="btn-primary px-7 py-3.5 text-base"
                   style={{ background: "#25d366" }}
                 >
-                  <MessageCircle size={18} /> WhatsApp Quote
+                  <WhatsAppIcon size={18} /> WhatsApp Quote
                 </a>
                 <Link href="/today-cement-price" className="btn-outline px-7 py-3.5 text-base" style={{ borderColor: "#c8972a", color: "#c8972a" }}>
                   Today&apos;s Prices <ArrowRight size={16} />
@@ -329,7 +330,7 @@ export default async function HomePage() {
               className="btn-primary px-8 py-3.5 text-base"
               style={{ background: "#25d366" }}
             >
-              <MessageCircle size={18} /> WhatsApp Us
+              <WhatsAppIcon size={18} /> WhatsApp Us
             </a>
             <Link href="/contact" className="btn-outline px-8 py-3.5 text-base" style={{ borderColor: "#fff", color: "#fff" }}>
               Contact Form

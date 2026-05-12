@@ -2,7 +2,8 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { formatPrice, formatDateTime } from "@/lib/utils";
 import { buildMetadata } from "@/lib/seo";
-import { TrendingUp, Phone, MessageCircle, ArrowRight, AlertCircle } from "lucide-react";
+import { TrendingUp, Phone, ArrowRight, AlertCircle } from "lucide-react";
+import WhatsAppIcon from "@/components/public/WhatsAppIcon";
 import { BUSINESS } from "@/lib/constants";
 import type { Metadata } from "next";
 
@@ -89,7 +90,7 @@ export default async function CementPricePage() {
         {/* Inline CTA */}
         <div className="flex flex-col sm:flex-row gap-3 mb-8">
           <a href={`https://wa.me/${BUSINESS.whatsapp}?text=Hi, I need current cement price and bulk quote.`} target="_blank" className="btn-primary px-6 py-3" style={{ background: "#25d366" }}>
-            <MessageCircle size={16} /> WhatsApp for Bulk Quote
+            <WhatsAppIcon size={16} /> WhatsApp for Bulk Quote
           </a>
           <a href={BUSINESS.branches[0].phone1Href} className="btn-outline px-6 py-3">
             <Phone size={16} /> Call {BUSINESS.branches[0].phone1}

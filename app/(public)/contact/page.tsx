@@ -1,6 +1,7 @@
 import { buildMetadata } from "@/lib/seo";
 import { BUSINESS } from "@/lib/constants";
-import { Phone, MessageCircle, MapPin, Clock, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import WhatsAppIcon from "@/components/public/WhatsAppIcon";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
@@ -63,7 +64,7 @@ export default function ContactPage() {
                       <Phone size={13} /> Call
                     </a>
                     <a href={`https://wa.me/${BUSINESS.whatsapp}`} target="_blank" className="btn-primary text-sm px-4 py-2" style={{ background: "#25d366" }}>
-                      <MessageCircle size={13} /> WhatsApp
+                      <WhatsAppIcon size={13} /> WhatsApp
                     </a>
                     <a href={`https://maps.google.com/maps?q=${b.mapQuery}`} target="_blank" className="btn-outline text-sm px-4 py-2">
                       <MapPin size={13} /> Map
