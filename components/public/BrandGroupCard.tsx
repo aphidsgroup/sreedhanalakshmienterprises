@@ -83,7 +83,7 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
               </div>
               <div className="flex-shrink-0">
                 {hasPrice ? (
-                  <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#eef8f2", color: "#3BB77E" }}>
+                  <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#edf6f8", color: "#2b7a8c" }}>
                     Rs. {typeof product.currentPrice === "number" ? product.currentPrice.toFixed(2) : Number(product.currentPrice).toFixed(2)}
                   </span>
                 ) : (
@@ -104,7 +104,7 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
           target="_blank"
           rel="noopener noreferrer"
           className="w-full flex items-center justify-center py-3 rounded text-sm font-bold text-white transition-opacity hover:opacity-90"
-          style={{ backgroundColor: "#3BB77E" }}
+          style={{ backgroundColor: "#2b7a8c" }}
         >
           SHOP NOW
         </a>

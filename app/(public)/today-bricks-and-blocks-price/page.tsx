@@ -86,7 +86,7 @@ export default async function BricksBlocksPricePage() {
       <div className="max-w-7xl mx-auto px-4 pt-8 mb-12">
         <h1 className="text-2xl font-bold text-[#1a2129] mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>Today Bricks & Blocks Price</h1>
         
-        <div style={{ backgroundColor: "#3Ea072" }} className="border-t-[3px] border-b-[3px] border-[#ffca28] p-5 sm:p-8">
+        <div style={{ backgroundColor: "#2b7a8c" }} className="border-t-[3px] border-b-[3px] border-[#1e5f6e] p-5 sm:p-8">
           <h2 className="text-white text-xl sm:text-2xl font-bold mb-6 tracking-wide">
             TODAY&apos;S PRICE : {getFormattedDate()}
           </h2>
@@ -98,7 +98,7 @@ export default async function BricksBlocksPricePage() {
             <p className="uppercase">* MINIMUM ORDER - 1 LOAD</p>
           </div>
           
-          <div style={{ backgroundColor: "#ffca28" }} className="py-3 px-4 text-center">
+          <div style={{ backgroundColor: "#edf6f8" }} className="py-3 px-4 text-center">
             <p className="text-[#1a2129] font-bold text-sm sm:text-base">
               FOR ENQUIRY PLEASE CALL : <a href={BUSINESS.branches[0].phone1Href} className="underline hover:text-black">{BUSINESS.branches[0].phone1}</a> | <a href={BUSINESS.branches[0].phone2Href || BUSINESS.branches[0].phone1Href} className="underline hover:text-black">{BUSINESS.branches[0].phone2 || "90940 18182"}</a>
             </p>
@@ -135,7 +135,7 @@ export default async function BricksBlocksPricePage() {
         
         {/* Related Categories */}
         <div className="mb-12">
-          <div className="p-4 rounded-t-lg" style={{ backgroundColor: "#3Ea072" }}>
+          <div className="p-4 rounded-t-lg" style={{ backgroundColor: "#2b7a8c" }}>
             <h3 className="text-white font-bold text-lg">Related Categories</h3>
           </div>
           <div className="bg-white border-l border-r border-b border-[#e2eaed] rounded-b-lg p-2 space-y-2">
@@ -146,7 +146,7 @@ export default async function BricksBlocksPricePage() {
             ].map((link) => (
               <div key={link.id} className="flex justify-between items-center p-3 border border-[#e2eaed] rounded hover:bg-[#f8f9fa] transition-colors">
                 <span className="text-sm font-medium text-[#4a5568]">{link.id}. {link.name}</span>
-                <Link href={link.href} className="px-4 py-1.5 rounded text-xs font-bold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: "#3Ea072" }}>
+                <Link href={link.href} className="px-4 py-1.5 rounded text-xs font-bold text-white transition-opacity hover:opacity-90" style={{ backgroundColor: "#2b7a8c" }}>
                   Click Here &rarr;
                 </Link>
               </div>
