@@ -6,13 +6,12 @@ import AdminTopBar from "@/components/admin/AdminTopBar";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
-  if (!session) redirect("/admin/login");
 
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: "#f0f4f6" }}>
       <AdminSidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
-        <AdminTopBar user={session.user} />
+        <AdminTopBar user={session?.user} />
         <main className="flex-1 overflow-y-auto p-6">{children}</main>
       </div>
     </div>
