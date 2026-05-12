@@ -39,10 +39,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
-      <head>
-        <link rel="manifest" href="/manifest.ts" />
-        <link rel="apple-touch-icon" href="/icon.png" />
-      </head>
       <body className="font-sans antialiased">
         <Providers>{children}</Providers>
       </body>
