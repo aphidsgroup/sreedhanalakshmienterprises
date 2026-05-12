@@ -85,14 +85,6 @@ export default function MobileBottomNav() {
                 Prices <ChevronUp size={10} className={`transition-transform duration-300 ${showMenu ? "rotate-180" : ""}`} />
               </span>
             </button>
-
-            <Link 
-              href="/contact" 
-              className={`flex flex-col items-center justify-center w-full h-full space-y-1 ${pathname === "/contact" ? "text-[#2b7a8c]" : "text-[#64748b]"}`}
-            >
-              <Phone size={22} className={pathname === "/contact" ? "fill-current" : ""} />
-              <span className="text-[10px] font-semibold">Contact</span>
-            </Link>
           </div>
 
           {/* Floating WhatsApp Button */}
