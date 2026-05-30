@@ -51,6 +51,7 @@ export default function MobileBottomNav() {
               { label: "Steel / TMT Price", href: "/today-steel-price" },
               { label: "Bricks & Blocks Price", href: "/today-bricks-and-blocks-price" },
               { label: "Sand & Aggregates Price", href: "/today-sand-and-aggregates-price" },
+              { label: "Fabrication Materials Price", href: "/today-fabrication-materials-price" },
             ].map((item) => (
               <Link 
                 key={item.href} 
