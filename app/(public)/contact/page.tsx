@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Us",
-  description: "Contact Sree Dhanalakshmi Enterprises. Two branches in Chennai: Kilpauk (90947 79299) and Mangadu (73057 77117). WhatsApp, call, or fill our contact form.",
+  description: "Contact Sree Dhanalakshmi Enterprises. Two branches in Chennai. Call or WhatsApp us at +91 7305777117, or fill our contact form.",
   path: "/contact",
   keywords: "SDE Enterprises contact, construction materials supplier contact Chennai",
 });

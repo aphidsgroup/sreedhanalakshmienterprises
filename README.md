@@ -151,7 +151,7 @@ npx prisma generate  # Regenerate Prisma client
 ## ✅ Two Branches
 | Branch | Address | Phone |
 |--------|---------|-------|
-| Kilpauk | No. 72, Kilpauk Garden Road, Chennai - 600010 | 90947 79299, 90940 18182 |
-| Mangadu | No. 343, KK Nagar, Kundrathur Main Road, Chennai - 600122 | 73057 77117 |
+| Kilpauk | No. 72, Kilpauk Garden Road, Chennai - 600010 | +91 7305777117 |
+| Mangadu | No. 343, KK Nagar, Kundrathur Main Road, Chennai - 600122 | +91 7305777117 |
 
 Email: sdenterprise09@gmail.com

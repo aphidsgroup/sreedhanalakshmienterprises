@@ -96,7 +96,7 @@ export default async function SteelPricePage() {
           
           <div style={{ backgroundColor: "#edf6f8" }} className="py-3 px-4 text-center">
             <p className="text-[#1a2129] font-bold text-sm sm:text-base">
-              FOR ENQUIRY PLEASE CALL : <a href={BUSINESS.branches[0].phone1Href} className="underline hover:text-black">{BUSINESS.branches[0].phone1}</a> | <a href={BUSINESS.branches[0].phone2Href || BUSINESS.branches[0].phone1Href} className="underline hover:text-black">{BUSINESS.branches[0].phone2 || "90940 18182"}</a>
+              FOR ENQUIRY PLEASE CALL : <a href={BUSINESS.branches[0].phone1Href} className="underline hover:text-black">{BUSINESS.branches[0].phone1}</a>
             </p>
           </div>
         </div>
