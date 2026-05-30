@@ -3,6 +3,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { BUSINESS } from "@/lib/constants";
 import BrandGroupCard from "@/components/public/BrandGroupCard";
+import FAQSection from "@/components/public/FAQSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
@@ -127,6 +128,16 @@ export default async function SandAggregatesPricePage() {
       {/* Bottom Sections */}
       <div className="max-w-7xl mx-auto px-4 mb-8">
         
+        <FAQSection faqs={[
+          { question: "What is today's M Sand price in Chennai?", answer: "M Sand (Manufactured Sand) prices in Chennai generally range between ₹35 to ₹55 per cubic feet depending on the quality (double washed vs single washed) and delivery distance. Contact us for a bulk quotation." },
+          { question: "Which sand is best for house construction?", answer: "For concrete work (slabs, pillars), double washed M Sand is highly recommended as it provides excellent compressive strength. For plastering walls smoothly, P Sand (Plastering Sand) is the ideal choice." },
+          { question: "How to calculate sand quantity required?", answer: "Quantity is usually measured in Units (1 Unit = 100 Cubic Feet). A 1000 sq ft residential build typically requires around 25-30 units of sand and 15-20 units of blue metal (aggregates) from foundation to finish." },
+          { question: "What affects sand and aggregate prices?", answer: "Prices fluctuate based on quarry availability, government regulations, diesel prices (which impact transport), and the distance between the crusher/quarry and your construction site." },
+          { question: "Can I get site delivery for sand?", answer: "Yes, we deliver sand and blue metal directly to your site across Chennai. We arrange specific lorry sizes (2 unit, 3 unit, or 4 unit loads) based on your site access." },
+          { question: "Which branch serves my area?", answer: "Our Kilpauk branch organizes central and north Chennai deliveries, while the Mangadu branch serves west and south-west Chennai to keep transport costs minimal." },
+          { question: "How to order sand through WhatsApp?", answer: "Just use the WhatsApp button, mention whether you need M Sand, P Sand, or Blue Metal (mention size: 20mm, 12mm), the number of units, and the site location. We'll share the final delivered price." }
+        ]} />
+
         {/* Related Categories */}
         <div className="mb-12">
           <div className="p-4 rounded-t-lg" style={{ backgroundColor: "#2b7a8c" }}>
@@ -137,6 +148,7 @@ export default async function SandAggregatesPricePage() {
               { id: 1, name: "Cement Today Price in Chennai", href: "/today-cement-price" },
               { id: 2, name: "Steel Today Price in Chennai", href: "/today-steel-price" },
               { id: 3, name: "Bricks and Blocks Today Price in Chennai", href: "/today-bricks-and-blocks-price" },
+              { id: 4, name: "Fabrication Materials Today Price in Chennai", href: "/today-fabrication-materials-price" },
             ].map((link) => (
               <div key={link.id} className="flex justify-between items-center p-3 border border-[#e2eaed] rounded hover:bg-[#f8f9fa] transition-colors">
                 <span className="text-sm font-medium text-[#4a5568]">{link.id}. {link.name}</span>

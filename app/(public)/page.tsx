@@ -279,6 +279,59 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* COMPREHENSIVE SEO CONTENT BLOCK */}
+      <section className="py-16 px-4 bg-white border-t border-b border-[#e2eaed]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h2 style={{ fontFamily: "Outfit, sans-serif", fontSize: "1.85rem", fontWeight: 700, color: "#1a2129", marginBottom: "1rem" }}>
+                Construction Materials Supplier in Chennai for Builders, Contractors and Homeowners
+              </h2>
+              <div className="w-16 h-1 mb-6 rounded" style={{ backgroundColor: "#2b7a8c" }}></div>
+              <p className="text-[#4a5568] text-base leading-relaxed mb-4">
+                Sree Dhanalakshmi Enterprises supplies cement, TMT steel, bricks, blocks, M Sand, P Sand, blue metal, aggregates and fabrication materials across Chennai. With branches in Kilpauk and Mangadu, we support house construction, apartment projects, commercial buildings, renovation work and contractor bulk orders with transparent pricing and site delivery support.
+              </p>
+              <p className="text-[#4a5568] text-base leading-relaxed mb-6">
+                Our mission is to provide genuine materials directly to your site, removing the hassle of procurement. Whether you need a single truck of river sand for a small renovation or bulk TMT bars for a multi-story apartment, our dedicated team ensures prompt delivery and accurate weighment.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/about" className="text-sm font-bold flex items-center gap-1 hover:underline" style={{ color: "#2b7a8c" }}>
+                  Learn More About Us <ArrowRight size={14} />
+                </Link>
+                <Link href="/contact" className="text-sm font-bold flex items-center gap-1 hover:underline" style={{ color: "#2b7a8c" }}>
+                  Contact Our Branches <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+            
+            <div className="bg-[#f0f4f6] rounded-xl p-8 border border-[#e2eaed]">
+              <h3 style={{ fontFamily: "Outfit, sans-serif", fontSize: "1.25rem", fontWeight: 700, color: "#1a2129", marginBottom: "1.25rem" }}>
+                Popular Searches We Serve
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+                {[
+                  { name: "Cement price today in Chennai", href: "/today-cement-price" },
+                  { name: "TMT steel price today in Chennai", href: "/today-steel-price" },
+                  { name: "M Sand supplier in Chennai", href: "/today-sand-and-aggregates-price" },
+                  { name: "P Sand supplier in Chennai", href: "/today-sand-and-aggregates-price" },
+                  { name: "Blue metal supplier in Chennai", href: "/today-sand-and-aggregates-price" },
+                  { name: "Bricks supplier in Chennai", href: "/today-bricks-and-blocks-price" },
+                  { name: "AAC blocks supplier in Chennai", href: "/today-bricks-and-blocks-price" },
+                  { name: "Fabrication materials supplier in Chennai", href: "/today-fabrication-materials-price" },
+                  { name: "Construction materials near me", href: "/construction-materials-supplier-in-chennai" },
+                  { name: "Building materials with site delivery Chennai", href: "/construction-materials-supplier-in-chennai" },
+                ].map((link, i) => (
+                  <Link key={i} href={link.href} className="text-[0.85rem] font-medium text-[#4a5568] hover:text-[#2b7a8c] flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#c8972a" }}></span>
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* TESTIMONIALS PLACEHOLDER */}
       <section className="py-14 px-4 bg-[#f0f4f6]">
         <div className="max-w-7xl mx-auto">

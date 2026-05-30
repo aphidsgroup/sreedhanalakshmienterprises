@@ -84,11 +84,11 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
               <div className="flex-shrink-0">
                 {hasPrice ? (
                   <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#edf6f8", color: "#2b7a8c" }}>
-                    Rs. {typeof product.currentPrice === "number" ? product.currentPrice.toFixed(2) : Number(product.currentPrice).toFixed(2)}
+                    ₹ {typeof product.currentPrice === "number" ? product.currentPrice.toFixed(2) : Number(product.currentPrice).toFixed(2)}
                   </span>
                 ) : (
                   <span className="text-xs font-bold px-3 py-1.5 rounded italic" style={{ backgroundColor: "#f1f1f1", color: "#888888" }}>
-                    Nil
+                    Call for Price
                   </span>
                 )}
               </div>

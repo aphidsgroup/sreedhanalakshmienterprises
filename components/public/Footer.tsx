@@ -61,7 +61,9 @@ export default function Footer() {
               { label: "Products", href: "/products" },
               { label: "Company Profile", href: "/company-profile" },
               { label: "Contact", href: "/contact" },
-              { label: "FAQ", href: "/faq" },
+              { label: "Chennai Supplier Hub", href: "/construction-materials-supplier-in-chennai" },
+              { label: "Kilpauk Branch", href: "/construction-materials-supplier-in-kilpauk" },
+              { label: "Mangadu Branch", href: "/construction-materials-supplier-in-mangadu" },
             ].map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="hover:text-[#3d9aaf] transition-colors">
@@ -81,6 +83,7 @@ export default function Footer() {
               { label: "Steel Price Today", href: "/today-steel-price" },
               { label: "Bricks & Blocks Price", href: "/today-bricks-and-blocks-price" },
               { label: "Sand & Aggregates Price", href: "/today-sand-and-aggregates-price" },
+              { label: "Fabrication Materials Price", href: "/today-fabrication-materials-price" },
             ].map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="hover:text-[#3d9aaf] transition-colors">

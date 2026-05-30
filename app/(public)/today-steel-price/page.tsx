@@ -3,6 +3,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { BUSINESS } from "@/lib/constants";
 import BrandGroupCard from "@/components/public/BrandGroupCard";
+import FAQSection from "@/components/public/FAQSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
@@ -129,6 +130,16 @@ export default async function SteelPricePage() {
       {/* Bottom Sections */}
       <div className="max-w-7xl mx-auto px-4 mb-8">
         
+        <FAQSection faqs={[
+          { question: "What is today's TMT steel price in Chennai?", answer: "Today's steel price in Chennai depends on the brand (e.g., Tata Tiscon, JSW, Suryadev) and grade (Fe 500D vs Fe 550D). Prices generally range between ₹55 to ₹75 per kg. Contact us on WhatsApp for exact brand-wise wholesale rates." },
+          { question: "Which TMT bar is best for house construction?", answer: "Fe 500D is the most recommended grade for residential construction in Chennai because it offers an excellent balance of strength and ductility (earthquake resistance). For heavier commercial structures, Fe 550D might be preferred." },
+          { question: "How to calculate steel quantity required?", answer: "As a general estimate, house construction requires about 3 to 4 kg of steel per square foot of built-up area. A structural engineer will provide exact measurements based on your bar bending schedule (BBS)." },
+          { question: "What affects steel price in Chennai?", answer: "Steel prices fluctuate almost daily based on raw material availability, global iron ore prices, transportation costs, and local demand. Booking in bulk usually secures a better per-ton rate." },
+          { question: "Can I get site delivery for TMT steel?", answer: "Yes, Sree Dhanalakshmi Enterprises offers site delivery across Chennai. Our minimum order is usually 1 MT (Metric Ton) for free or subsidized delivery depending on the location." },
+          { question: "Which branch serves my area?", answer: "Our Kilpauk branch manages deliveries in central and north Chennai, while our Mangadu branch handles west and south-west Chennai requirements." },
+          { question: "How to order steel through WhatsApp?", answer: "Click 'WhatsApp Us', share the brand you want, sizes (e.g., 8mm, 12mm), total tonnage, and delivery location. We will send you today's customized quotation immediately." }
+        ]} />
+
         {/* Related Categories */}
         <div className="mb-12">
           <div className="p-4 rounded-t-lg" style={{ backgroundColor: "#2b7a8c" }}>
@@ -139,6 +150,7 @@ export default async function SteelPricePage() {
               { id: 1, name: "Cement Today Price in Chennai", href: "/today-cement-price" },
               { id: 2, name: "Bricks and Blocks Today Price in Chennai", href: "/today-bricks-and-blocks-price" },
               { id: 3, name: "Sand and Aggregates Today Price in Chennai", href: "/today-sand-and-aggregates-price" },
+              { id: 4, name: "Fabrication Materials Today Price in Chennai", href: "/today-fabrication-materials-price" },
             ].map((link) => (
               <div key={link.id} className="flex justify-between items-center p-3 border border-[#e2eaed] rounded hover:bg-[#f8f9fa] transition-colors">
                 <span className="text-sm font-medium text-[#4a5568]">{link.id}. {link.name}</span>

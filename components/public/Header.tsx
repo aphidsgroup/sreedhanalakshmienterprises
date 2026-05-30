@@ -16,6 +16,16 @@ const nav = [
       { label: "Steel Price", href: "/today-steel-price" },
       { label: "Bricks & Blocks Price", href: "/today-bricks-and-blocks-price" },
       { label: "Sand & Aggregates Price", href: "/today-sand-and-aggregates-price" },
+      { label: "Fabrication Materials Price", href: "/today-fabrication-materials-price" },
+    ],
+  },
+  {
+    label: "Service Areas",
+    href: "#",
+    children: [
+      { label: "Chennai Supplier Hub", href: "/construction-materials-supplier-in-chennai" },
+      { label: "Kilpauk Branch", href: "/construction-materials-supplier-in-kilpauk" },
+      { label: "Mangadu Branch", href: "/construction-materials-supplier-in-mangadu" },
     ],
   },
   { label: "About", href: "/about" },

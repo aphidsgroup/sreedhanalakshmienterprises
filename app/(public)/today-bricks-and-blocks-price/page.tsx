@@ -3,6 +3,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { BUSINESS } from "@/lib/constants";
 import BrandGroupCard from "@/components/public/BrandGroupCard";
+import FAQSection from "@/components/public/FAQSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
@@ -133,6 +134,16 @@ export default async function BricksBlocksPricePage() {
       {/* Bottom Sections */}
       <div className="max-w-7xl mx-auto px-4 mb-8">
         
+        <FAQSection faqs={[
+          { question: "What is today's bricks price in Chennai?", answer: "Brick prices in Chennai vary by type. Red chamber bricks usually cost between ₹7 to ₹11 per piece, while AAC blocks are priced around ₹55 to ₹75 per block based on size. Contact us for today's wholesale rates." },
+          { question: "Which is better for house construction: Red Bricks or AAC Blocks?", answer: "Red bricks are traditional, load-bearing, and great for heat insulation. AAC blocks are lightweight, speed up construction, and reduce the overall dead load on the structure. Both are excellent choices depending on your engineering design." },
+          { question: "How to calculate bricks quantity required?", answer: "For a standard 9-inch wall, you need about 10-12 standard red bricks per square foot. For AAC blocks, you need about 1 block per square foot (for 8x8x24 size). A 1000 sq ft house typically needs 15,000 to 20,000 red bricks." },
+          { question: "What affects brick prices in Chennai?", answer: "Prices depend on the manufacturing season (prices often rise during monsoons due to lower production), transportation distance from the chamber/factory to your site, and order volume." },
+          { question: "Can I get site delivery for bricks and blocks?", answer: "Yes, we arrange lorry loads (typically 3000 to 4500 red bricks per load) delivered directly to your site across Chennai and surrounding areas." },
+          { question: "Which branch serves my area?", answer: "Kilpauk branch handles central/north Chennai deliveries, while the Mangadu branch covers west and south-west Chennai. We ensure timely dispatch from the closest yard or direct from the chamber." },
+          { question: "How to order bricks through WhatsApp?", answer: "Click our WhatsApp button, specify the type of brick (Red, Fly Ash, AAC), quantity required, and your site address. We'll reply with a quotation including transport." }
+        ]} />
+
         {/* Related Categories */}
         <div className="mb-12">
           <div className="p-4 rounded-t-lg" style={{ backgroundColor: "#2b7a8c" }}>
@@ -143,6 +154,7 @@ export default async function BricksBlocksPricePage() {
               { id: 1, name: "Cement Today Price in Chennai", href: "/today-cement-price" },
               { id: 2, name: "Steel Today Price in Chennai", href: "/today-steel-price" },
               { id: 3, name: "Sand and Aggregates Today Price in Chennai", href: "/today-sand-and-aggregates-price" },
+              { id: 4, name: "Fabrication Materials Today Price in Chennai", href: "/today-fabrication-materials-price" },
             ].map((link) => (
               <div key={link.id} className="flex justify-between items-center p-3 border border-[#e2eaed] rounded hover:bg-[#f8f9fa] transition-colors">
                 <span className="text-sm font-medium text-[#4a5568]">{link.id}. {link.name}</span>

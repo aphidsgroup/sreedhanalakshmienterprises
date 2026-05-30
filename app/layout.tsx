@@ -14,6 +14,7 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.sreedhanalakshmienterprises.in"),
   title: "Sree Dhanalakshmi Enterprises | Construction Materials Supplier Chennai",
   description:
     "Chennai's trusted construction material supplier since 1980. Cement, Steel/TMT Bars, Bricks, Sand & Aggregates at best prices. Two branches: Kilpauk & Mangadu.",

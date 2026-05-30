@@ -3,6 +3,7 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { BUSINESS } from "@/lib/constants";
 import BrandGroupCard from "@/components/public/BrandGroupCard";
+import FAQSection from "@/components/public/FAQSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = buildMetadata({
@@ -132,6 +133,16 @@ export default async function CementPricePage() {
       {/* Bottom Sections */}
       <div className="max-w-7xl mx-auto px-4 mb-8">
         
+        <FAQSection faqs={[
+          { question: "What is today's cement price in Chennai?", answer: "Today's cement price in Chennai varies by brand and grade. On average, OPC and PPC cement prices range from ₹300 to ₹450 per bag. Contact us via WhatsApp for today's exact bulk quotation." },
+          { question: "Which cement is best for house construction?", answer: "For foundation and structural work (slabs, pillars), OPC 53 grade cement is recommended for its high early strength. For plastering and masonry, PPC cement is ideal due to its better workability and smooth finish." },
+          { question: "How to calculate cement quantity required?", answer: "As a general rule of thumb, you need about 0.4 to 0.5 bags of cement per square foot of built-up area for a standard residential house. However, this varies based on structural design." },
+          { question: "What affects cement price in Chennai?", answer: "Cement prices fluctuate based on raw material costs, transportation charges, brand reputation, and market demand. Bulk contractor orders usually receive better wholesale pricing." },
+          { question: "Can I get site delivery for cement?", answer: "Yes, Sree Dhanalakshmi Enterprises provides doorstep delivery across Chennai and Tamil Nadu for bulk orders (minimum 100 bags). Transport costs depend on the delivery location." },
+          { question: "Which branch serves my area?", answer: "Our Kilpauk branch serves central and north Chennai, while our Mangadu branch covers west and south-west Chennai. Both branches coordinate to ensure the fastest delivery to your site." },
+          { question: "How to order cement through WhatsApp?", answer: "Simply click the 'WhatsApp Us' button, mention your required brand, grade, quantity, and delivery location. Our team will instantly share the best price quotation." }
+        ]} />
+
         {/* Related Categories */}
         <div className="mb-12">
           <div className="p-4 rounded-t-lg" style={{ backgroundColor: "#2b7a8c" }}>
@@ -142,6 +153,7 @@ export default async function CementPricePage() {
               { id: 1, name: "Steel Today Price in Chennai", href: "/today-steel-price" },
               { id: 2, name: "Bricks and Blocks Today Price in Chennai", href: "/today-bricks-and-blocks-price" },
               { id: 3, name: "Sand and Aggregates Today Price in Chennai", href: "/today-sand-and-aggregates-price" },
+              { id: 4, name: "Fabrication Materials Today Price in Chennai", href: "/today-fabrication-materials-price" },
             ].map((link) => (
               <div key={link.id} className="flex justify-between items-center p-3 border border-[#e2eaed] rounded hover:bg-[#f8f9fa] transition-colors">
                 <span className="text-sm font-medium text-[#4a5568]">{link.id}. {link.name}</span>

@@ -52,6 +52,7 @@ export const CATEGORIES = [
   { slug: "steel", name: "Steel / TMT Bars", icon: "⚙️", priceSlug: "today-steel-price" },
   { slug: "bricks-and-blocks", name: "Bricks & Blocks", icon: "🧱", priceSlug: "today-bricks-and-blocks-price" },
   { slug: "sand-and-aggregates", name: "Sand & Aggregates", icon: "⛏️", priceSlug: "today-sand-and-aggregates-price" },
+  { slug: "fabrication-materials", name: "Fabrication Materials", icon: "🛠️", priceSlug: "today-fabrication-materials-price" },
 ] as const;
 
 export const TRUSTED_CLIENTS = [
