@@ -96,6 +96,9 @@ export default async function CementPricePage() {
             <p className="uppercase">* THE PRICE IS MENTIONED ONLY FOR CHENNAI ONLY.</p>
             <p className="uppercase">* CEMENT BAGS COLOR AND DESIGN MAY VARY</p>
             <p className="uppercase">* MINIMUM ORDER - 100 BAGS</p>
+            <p className="mt-4 text-xs sm:text-sm text-yellow-100 italic border-t border-[#3d9aaf] pt-3">
+              * Disclaimer: Prices shown are indicative Chennai market rates. Actual rates may vary based on brand, size, quantity, delivery location, GST, transport, stock availability and supplier rate changes. Please call or WhatsApp for final quotation.
+            </p>
           </div>
           
           <div style={{ backgroundColor: "#edf6f8" }} className="py-3 px-4 text-center">

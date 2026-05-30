@@ -9,8 +9,12 @@ interface ProductCardProps {
   specification?: string;
   unit: string;
   price: string | number | null;
+  minPrice?: string | number | null;
+  maxPrice?: string | number | null;
+  priceType?: string;
   remarks?: string;
   imageUrl: string;
+  categoryName?: string;
 }
 
 export default function ProductCard({
@@ -19,14 +23,36 @@ export default function ProductCard({
   specification,
   unit,
   price,
+  minPrice,
+  maxPrice,
+  priceType = "fixed",
   remarks,
   imageUrl,
+  categoryName
 }: ProductCardProps) {
-  const displayPrice = price ? (typeof price === "number" ? formatPrice(price) : price) : "On Request";
-  const title = brand ? `${brand} ${name}` : name;
+  
+  let displayPrice: React.ReactNode = "On Request";
+  let wMessagePrice = "";
+
+  if (priceType === "call_for_price") {
+    displayPrice = "Call for Price";
+    wMessagePrice = "";
+  } else if (priceType === "starting_from" && minPrice) {
+    displayPrice = <><span className="text-sm font-normal text-gray-500 block mb-[-4px]">Starting from</span>{typeof minPrice === "number" ? formatPrice(minPrice) : minPrice}</>;
+    wMessagePrice = `(Starting from ${minPrice})`;
+  } else if (priceType === "range" && minPrice && maxPrice) {
+    displayPrice = `${typeof minPrice === "number" ? formatPrice(minPrice) : minPrice} - ${typeof maxPrice === "number" ? formatPrice(maxPrice) : maxPrice}`;
+    wMessagePrice = `(${minPrice} - ${maxPrice})`;
+  } else if (price && priceType === "fixed") {
+    displayPrice = typeof price === "number" ? formatPrice(price) : price;
+    wMessagePrice = `(Listed at ${price})`;
+  }
+
+  const title = brand && brand !== "General" ? `${brand} ${name}` : name;
+  const catText = categoryName ? ` ${categoryName}` : "";
   
   // Create WhatsApp message string
-  const message = `Hi, I would like to enquire about ${title} ${specification ? `(${specification})` : ""}. Please provide the latest price and availability.`;
+  const message = `Hi Sree Dhanalakshmi Enterprises, I need today price for ${title}${catText} in Chennai.\nQuantity:\nDelivery location:\nPlease share final quotation.`;
   const whatsappHref = `https://wa.me/${BUSINESS.whatsapp}?text=${encodeURIComponent(message)}`;
 
   return (

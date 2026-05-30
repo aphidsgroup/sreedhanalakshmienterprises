@@ -82,8 +82,12 @@ model Product {
   slug          String         @unique
   specification String?
   unit          String         @default("bag")
+  priceType     String         @default("fixed") // fixed, range, starting_from, call_for_price
   currentPrice  Decimal?       @db.Decimal(10, 2)
+  minPrice      Decimal?       @db.Decimal(10, 2)
+  maxPrice      Decimal?       @db.Decimal(10, 2)
   oldPrice      Decimal?       @db.Decimal(10, 2)
+  priceUpdatedBy String?
   remarks       String?
   stockStatus   String         @default("in_stock")
   isFeatured    Boolean        @default(false)
@@ -98,6 +102,8 @@ model Product {
   brandId       String?
   images        ProductImage[]
   priceHistory  PriceHistory[]
+  observations  PriceObservation[]
+  suggestions   PriceSuggestion[]
 }
 
 model ProductImage {
@@ -115,12 +121,58 @@ model ProductImage {
 
 model PriceHistory {
   id            String   @id @default(cuid())
-  price         Decimal  @db.Decimal(10, 2)
+  price         Decimal? @db.Decimal(10, 2)
+  minPrice      Decimal? @db.Decimal(10, 2)
+  maxPrice      Decimal? @db.Decimal(10, 2)
+  priceType     String   @default("fixed")
+  sourceName    String?
+  changedBy     String?
+  changeReason  String?
   effectiveDate DateTime @default(now())
   note          String?
   createdAt     DateTime @default(now())
   product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId     String
+}
+
+model PriceObservation {
+  id              String   @id @default(cuid())
+  productId       String
+  product         Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  sourceName      String
+  sourceType      String   @default("manual_entry") // manual_entry, csv_import, etc.
+  observedPrice   Decimal? @db.Decimal(10, 2)
+  observedUnit    String?
+  normalizedPrice Decimal? @db.Decimal(10, 2)
+  normalizedUnit  String?
+  confidenceScore Int      @default(100)
+  sourceUrl       String?
+  notes           String?
+  collectedAt     DateTime @default(now())
+  createdAt       DateTime @default(now())
+}
+
+model PriceSuggestion {
+  id                 String   @id @default(cuid())
+  productId          String
+  product            Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  oldPrice           Decimal? @db.Decimal(10, 2)
+  oldMinPrice        Decimal? @db.Decimal(10, 2)
+  oldMaxPrice        Decimal? @db.Decimal(10, 2)
+  suggestedPrice     Decimal? @db.Decimal(10, 2)
+  suggestedMinPrice  Decimal? @db.Decimal(10, 2)
+  suggestedMaxPrice  Decimal? @db.Decimal(10, 2)
+  suggestedUnit      String?
+  suggestedPriceType String   @default("fixed")
+  changePercent      Decimal? @db.Decimal(5, 2)
+  confidenceScore    Int      @default(100)
+  sourceName         String?
+  sourceType         String?
+  reason             String?
+  status             String   @default("pending") // pending, approved, rejected, edited
+  reviewedBy         String?
+  reviewedAt         DateTime?
+  createdAt          DateTime @default(now())
 }
 
 model FAQ {

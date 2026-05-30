@@ -10,6 +10,9 @@ interface BrandProduct {
   specification?: string;
   unit: string;
   currentPrice: number | null | string;
+  minPrice?: number | null | string;
+  maxPrice?: number | null | string;
+  priceType?: string;
 }
 
 interface BrandGroupCardProps {
@@ -71,8 +74,20 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
       {/* Product List */}
       <div className="flex-grow p-4 flex flex-col gap-0">
         {products.map((product, idx) => {
-          // Check if price exists and is not 0
-          const hasPrice = product.currentPrice && Number(product.currentPrice) > 0;
+          const pt = product.priceType || "fixed";
+          let priceDisplay: React.ReactNode = "Call for Price";
+          
+          if (pt === "call_for_price") {
+            priceDisplay = "Call for Price";
+          } else if (pt === "starting_from" && product.minPrice) {
+            priceDisplay = `From ₹${Number(product.minPrice).toFixed(2)}`;
+          } else if (pt === "range" && product.minPrice && product.maxPrice) {
+            priceDisplay = `₹${Number(product.minPrice).toFixed(2)} - ₹${Number(product.maxPrice).toFixed(2)}`;
+          } else if (product.currentPrice && Number(product.currentPrice) > 0) {
+            priceDisplay = `₹ ${Number(product.currentPrice).toFixed(2)}`;
+          }
+
+          const isCallForPrice = priceDisplay === "Call for Price";
           
           return (
             <div key={product.id || idx} className="flex justify-between items-center py-3 border-b border-[#f5f5f5] last:border-0">
@@ -82,13 +97,13 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
                 </p>
               </div>
               <div className="flex-shrink-0">
-                {hasPrice ? (
+                {!isCallForPrice ? (
                   <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#edf6f8", color: "#2b7a8c" }}>
-                    ₹ {typeof product.currentPrice === "number" ? product.currentPrice.toFixed(2) : Number(product.currentPrice).toFixed(2)}
+                    {priceDisplay}
                   </span>
                 ) : (
                   <span className="text-xs font-bold px-3 py-1.5 rounded italic" style={{ backgroundColor: "#f1f1f1", color: "#888888" }}>
-                    Call for Price
+                    {priceDisplay}
                   </span>
                 )}
               </div>
