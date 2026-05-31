@@ -46,6 +46,12 @@ const nav = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDrop, setOpenDrop] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+
+  const toggleMobileMenu = (label: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    setMobileExpanded(mobileExpanded === label ? null : label);
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-[#e2eaed] shadow-sm">
@@ -140,37 +146,53 @@ export default function Header() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-[#e2eaed] bg-white px-4 py-4 space-y-1">
+        <div className="lg:hidden border-t border-[#e2eaed] bg-white px-4 py-4 space-y-1 max-h-[calc(100vh-64px)] overflow-y-auto">
           {nav.map((item) => (
             <div key={item.label}>
-              <Link
-                href={item.href}
-                className="block px-3 py-2.5 rounded-lg text-[0.95rem] font-medium text-[#1a2129] hover:bg-[#edf6f8] hover:text-[#2b7a8c]"
-                onClick={() => setMobileOpen(false)}
-              >
-                {item.label}
-              </Link>
+              {item.children ? (
+                <button
+                  onClick={(e) => toggleMobileMenu(item.label, e)}
+                  className="w-full flex justify-between items-center px-3 py-2.5 rounded-lg text-[0.95rem] font-medium text-[#1a2129] hover:bg-[#edf6f8] hover:text-[#2b7a8c]"
+                >
+                  {item.label}
+                  <ChevronDown size={16} className={`transition-transform duration-300 ${mobileExpanded === item.label ? "rotate-180" : ""}`} />
+                </button>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="block px-3 py-2.5 rounded-lg text-[0.95rem] font-medium text-[#1a2129] hover:bg-[#edf6f8] hover:text-[#2b7a8c]"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              )}
+              
               {item.children && (
-                <div className="pl-4 space-y-1">
-                  {item.children.map((c) => (
-                    <Link
-                      key={c.href}
-                      href={c.href}
-                      className="block px-3 py-2 rounded-lg text-sm text-[#4a5568] hover:bg-[#edf6f8] hover:text-[#2b7a8c]"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {c.label}
-                    </Link>
-                  ))}
+                <div className={`overflow-hidden transition-all duration-300 ${mobileExpanded === item.label ? "max-h-[500px] opacity-100 mt-1" : "max-h-0 opacity-0"}`}>
+                  <div className="pl-4 space-y-1 pb-2">
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className="block px-3 py-2 rounded-lg text-sm text-[#4a5568] hover:bg-[#edf6f8] hover:text-[#2b7a8c]"
+                        onClick={() => {
+                          setMobileOpen(false);
+                          setMobileExpanded(null);
+                        }}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
           ))}
-          <div className="pt-3 flex gap-3">
+          <div className="pt-3 flex gap-3 pb-8">
             <a href={BUSINESS.branches[0].phone1Href} className="btn-primary text-sm flex-1 justify-center">
               <Phone size={14} /> Call
             </a>
-            <a href={`https://wa.me/${BUSINESS.whatsapp}`} target="_blank" className="btn-primary text-sm flex-1 justify-center" style={{ background: "#25d366" }}>
+            <a href={`https://wa.me/${BUSINESS.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn-primary text-sm flex-1 justify-center" style={{ background: "#25d366" }}>
               <WhatsAppIcon size={14} /> WhatsApp
             </a>
           </div>
