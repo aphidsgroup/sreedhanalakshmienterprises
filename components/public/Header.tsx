@@ -28,6 +28,17 @@ const nav = [
       { label: "Mangadu Branch", href: "/construction-materials-supplier-in-mangadu" },
     ],
   },
+  {
+    label: "Buying Guides",
+    href: "#",
+    children: [
+      { label: "M Sand vs P Sand", href: "/m-sand-vs-p-sand" },
+      { label: "OPC vs PPC Cement", href: "/opc-vs-ppc-cement" },
+      { label: "Fe 500D vs 550D Steel", href: "/fe-500d-vs-fe-550d-tmt-bars" },
+      { label: "House Material Estimate", href: "/construction-materials-required-for-1000-sq-ft-house" },
+      { label: "How to Buy Safely", href: "/how-to-buy-construction-materials-in-chennai" },
+    ],
+  },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

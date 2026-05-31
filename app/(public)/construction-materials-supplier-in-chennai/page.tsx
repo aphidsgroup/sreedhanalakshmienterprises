@@ -77,16 +77,23 @@ export default function ChennaiSupplierPage() {
           <h2 className="text-2xl font-bold text-[#1a2129] mb-8 text-center" style={{ fontFamily: "Outfit, sans-serif" }}>What We Supply</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Cement", desc: "UltraTech, Ramco, Dalmia, ACC, Chettinad, JSW. OPC & PPC grades available for bulk site delivery." },
-              { title: "TMT Steel", desc: "Tata Tiscon, JSW Neosteel, Suryadev, Agni. Fe 500D and Fe 550D grades for strong foundations." },
-              { title: "Bricks & Blocks", desc: "Red chamber bricks, AAC blocks, fly ash bricks, and solid blocks for superior wall construction." },
-              { title: "Sand & Aggregates", desc: "Double washed M Sand, P Sand, River Sand, Blue Metal (20mm, 12mm), and crusher dust." },
-              { title: "Fabrication Materials", desc: "MS Angles, MS Channels, Pipes, Plates, and Roofing Sheets for all structural fabrication." },
+              { title: "Cement", desc: "UltraTech, Ramco, Dalmia, ACC, Chettinad, JSW. OPC & PPC grades available for bulk site delivery.", slug: "cement-supplier-in-chennai" },
+              { title: "TMT Steel", desc: "Tata Tiscon, JSW Neosteel, Suryadev, Agni. Fe 500D and Fe 550D grades for strong foundations.", slug: "tmt-steel-supplier-in-chennai" },
+              { title: "Bricks & Blocks", desc: "Red chamber bricks, AAC blocks, fly ash bricks, and solid blocks for superior wall construction.", slug: "bricks-supplier-in-chennai" },
+              { title: "Sand & Aggregates", desc: "Double washed M Sand, P Sand, River Sand, Blue Metal (20mm, 12mm), and crusher dust.", slug: "m-sand-supplier-in-chennai" },
+              { title: "Fabrication Materials", desc: "MS Angles, MS Channels, Pipes, Plates, and Roofing Sheets for all structural fabrication.", slug: "fabrication-materials-supplier-in-chennai" },
             ].map((item, i) => (
               <div key={i} className="bg-white p-6 rounded-lg border border-[#e2eaed] shadow-sm">
                 <CheckCircle className="text-[#2b7a8c] mb-4" size={28} />
-                <h3 className="font-bold text-lg mb-2 text-[#1a2129]">{item.title}</h3>
-                <p className="text-[#4a5568] text-sm">{item.desc}</p>
+                <h3 className="font-bold text-lg mb-2 text-[#1a2129]">
+                  <Link href={`/${item.slug}`} className="hover:text-[#2b7a8c] hover:underline transition-colors">
+                    {item.title}
+                  </Link>
+                </h3>
+                <p className="text-[#4a5568] text-sm mb-3">{item.desc}</p>
+                <Link href={`/${item.slug}`} className="text-[#2b7a8c] text-sm font-bold flex items-center gap-1 hover:underline">
+                  View details <ArrowRight size={14} />
+                </Link>
               </div>
             ))}
           </div>
