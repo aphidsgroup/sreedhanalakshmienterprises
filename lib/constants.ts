@@ -48,11 +48,11 @@ export const BRAND_COLORS = {
 } as const;
 
 export const CATEGORIES = [
-  { slug: "cement", name: "Cement", icon: "🏗️", priceSlug: "today-cement-price" },
-  { slug: "steel", name: "Steel / TMT Bars", icon: "⚙️", priceSlug: "today-steel-price" },
-  { slug: "bricks-and-blocks", name: "Bricks & Blocks", icon: "🧱", priceSlug: "today-bricks-and-blocks-price" },
-  { slug: "sand-and-aggregates", name: "Sand & Aggregates", icon: "⛏️", priceSlug: "today-sand-and-aggregates-price" },
-  { slug: "fabrication-materials", name: "Fabrication Materials", icon: "🛠️", priceSlug: "today-fabrication-materials-price" },
+  { slug: "cement", name: "Cement", icon: "🏗️", priceSlug: "today-cement-price", supplierSlug: "cement-supplier-in-chennai" },
+  { slug: "steel", name: "Steel / TMT Bars", icon: "⚙️", priceSlug: "today-steel-price", supplierSlug: "tmt-steel-supplier-in-chennai" },
+  { slug: "bricks-and-blocks", name: "Bricks & Blocks", icon: "🧱", priceSlug: "today-bricks-and-blocks-price", supplierSlug: "bricks-supplier-in-chennai" },
+  { slug: "sand-and-aggregates", name: "Sand & Aggregates", icon: "⛏️", priceSlug: "today-sand-and-aggregates-price", supplierSlug: "m-sand-supplier-in-chennai" },
+  { slug: "fabrication-materials", name: "Fabrication Materials", icon: "🛠️", priceSlug: "today-fabrication-materials-price", supplierSlug: "fabrication-materials-supplier-in-chennai" },
 ] as const;
 
 export const TRUSTED_CLIENTS = [

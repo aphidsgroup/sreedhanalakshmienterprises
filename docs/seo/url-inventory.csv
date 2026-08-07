@@ -1,0 +1,58 @@
+url,status,canonical_ok,title_snippet,page_type,target_keyword,target_location,target_product,schema_present,sitemap_included,action
+/,200,TRUE,Home,homepage,construction materials chennai,Chennai,,TRUE,TRUE,KEEP
+/about,200,TRUE,About Us,static,about sree dhanalakshmi,Chennai,,FALSE,TRUE,KEEP
+/contact,200,TRUE,Contact Us,static,contact sree dhanalakshmi,Chennai,,FALSE,TRUE,KEEP
+/today-cement-price,200,TRUE,Today Cement Price,price-page,cement price today chennai,Chennai,Cement,FALSE,TRUE,IMPROVE
+/today-steel-price,200,TRUE,Today Steel Price,price-page,steel price today chennai,Chennai,Steel,FALSE,TRUE,IMPROVE
+/today-bricks-and-blocks-price,200,TRUE,Bricks Price,price-page,bricks price today chennai,Chennai,Bricks,FALSE,TRUE,IMPROVE
+/today-sand-and-aggregates-price,200,TRUE,Sand Price,price-page,m sand price today chennai,Chennai,Sand,FALSE,TRUE,IMPROVE
+/today-fabrication-materials-price,200,TRUE,Fabrication Price,price-page,fabrication materials price,Chennai,Fabrication,FALSE,TRUE,IMPROVE
+/cement-supplier-in-chennai,200,TRUE,Cement Supplier,supplier-page,cement supplier chennai,Chennai,Cement,FALSE,TRUE,IMPROVE
+/tmt-steel-supplier-in-chennai,200,TRUE,Steel Supplier,supplier-page,tmt steel supplier chennai,Chennai,Steel,FALSE,TRUE,IMPROVE
+/m-sand-supplier-in-chennai,200,TRUE,M Sand Supplier,supplier-page,m sand supplier chennai,Chennai,Sand,FALSE,TRUE,IMPROVE
+/bricks-supplier-in-chennai,200,TRUE,Bricks Supplier,supplier-page,bricks supplier chennai,Chennai,Bricks,FALSE,TRUE,IMPROVE
+/fabrication-materials-supplier-in-chennai,200,TRUE,Fabrication Supplier,supplier-page,fabrication materials chennai,Chennai,Fabrication,FALSE,TRUE,IMPROVE
+/ms-angle-supplier-in-chennai,200,TRUE,MS Angle,supplier-page,ms angle supplier chennai,Chennai,Fabrication,FALSE,TRUE,IMPROVE
+/gi-pipe-supplier-in-chennai,200,TRUE,GI Pipe,supplier-page,gi pipe supplier chennai,Chennai,Fabrication,FALSE,TRUE,IMPROVE
+/p-sand-supplier-in-chennai,200,TRUE,P Sand,supplier-page,p sand supplier chennai,Chennai,Sand,FALSE,TRUE,IMPROVE
+/blue-metal-supplier-in-chennai,200,TRUE,Blue Metal,supplier-page,blue metal supplier chennai,Chennai,Sand,FALSE,TRUE,IMPROVE
+/aac-blocks-supplier-in-chennai,200,TRUE,AAC Blocks,supplier-page,aac blocks supplier chennai,Chennai,Bricks,FALSE,TRUE,IMPROVE
+/m-sand-vs-p-sand,200,TRUE,M Sand vs P Sand,guide-page,m sand vs p sand,,,FALSE,TRUE,IMPROVE
+/opc-vs-ppc-cement,200,TRUE,OPC vs PPC,guide-page,opc vs ppc cement,,,FALSE,TRUE,IMPROVE
+/fe-500d-vs-fe-550d-tmt-bars,200,TRUE,500D vs 550D,guide-page,fe 500d vs 550d,,,FALSE,TRUE,IMPROVE
+/aac-blocks-vs-red-bricks,200,TRUE,AAC vs Red Bricks,guide-page,aac blocks vs red bricks,,,FALSE,TRUE,IMPROVE
+/blue-metal-sizes-for-concrete,200,TRUE,Blue Metal Sizes,guide-page,blue metal sizes concrete,,,FALSE,TRUE,IMPROVE
+/construction-materials-required-for-1000-sq-ft-house,200,TRUE,Materials for 1000 sq ft,guide-page,materials for 1000 sq ft house,,,FALSE,TRUE,IMPROVE
+/how-to-buy-construction-materials-in-chennai,200,TRUE,How to buy materials,guide-page,buy construction materials chennai,,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-anna-nagar,200,TRUE,Anna Nagar,location-page,construction materials anna nagar,Anna Nagar,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-ambattur,200,TRUE,Ambattur,location-page,construction materials ambattur,Ambattur,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-adyar,200,TRUE,Adyar,location-page,construction materials adyar,Adyar,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-avadi,200,TRUE,Avadi,location-page,construction materials avadi,Avadi,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-chennai,200,TRUE,Chennai,location-page,construction materials chennai,Chennai,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-guindy,200,TRUE,Guindy,location-page,construction materials guindy,Guindy,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-iyyappanthangal,200,TRUE,Iyyappanthangal,location-page,construction materials iyyappanthangal,Iyyappanthangal,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-kilpauk,200,TRUE,Kilpauk,location-page,construction materials kilpauk,Kilpauk,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-koyambedu,200,TRUE,Koyambedu,location-page,construction materials koyambedu,Koyambedu,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-kundrathur,200,TRUE,Kundrathur,location-page,construction materials kundrathur,Kundrathur,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-maduravoyal,200,TRUE,Maduravoyal,location-page,construction materials maduravoyal,Maduravoyal,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-mangadu,200,TRUE,Mangadu,location-page,construction materials mangadu,Mangadu,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-medavakkam,200,TRUE,Medavakkam,location-page,construction materials medavakkam,Medavakkam,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-mylapore,200,TRUE,Mylapore,location-page,construction materials mylapore,Mylapore,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-nungambakkam,200,TRUE,Nungambakkam,location-page,construction materials nungambakkam,Nungambakkam,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-poonamallee,200,TRUE,Poonamallee,location-page,construction materials poonamallee,Poonamallee,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-porur,200,TRUE,Porur,location-page,construction materials porur,Porur,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-ramapuram,200,TRUE,Ramapuram,location-page,construction materials ramapuram,Ramapuram,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-t-nagar,200,TRUE,T Nagar,location-page,construction materials t nagar,T Nagar,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-tambaram,200,TRUE,Tambaram,location-page,construction materials tambaram,Tambaram,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-thiruverkadu,200,TRUE,Thiruverkadu,location-page,construction materials thiruverkadu,Thiruverkadu,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-vadapalani,200,TRUE,Vadapalani,location-page,construction materials vadapalani,Vadapalani,,FALSE,TRUE,IMPROVE
+/construction-materials-supplier-in-velachery,200,TRUE,Velachery,location-page,construction materials velachery,Velachery,,FALSE,TRUE,IMPROVE
+/products/cement,404,FALSE,N/A,supplier-page,,,,FALSE,FALSE,FIX-404
+/products/steel,404,FALSE,N/A,supplier-page,,,,FALSE,FALSE,FIX-404
+/products/bricks-and-blocks,404,FALSE,N/A,supplier-page,,,,FALSE,FALSE,FIX-404
+/products/sand-and-aggregates,404,FALSE,N/A,supplier-page,,,,FALSE,FALSE,FIX-404
+/products/fabrication-materials,404,FALSE,N/A,supplier-page,,,,FALSE,FALSE,FIX-404
+/robots.txt,404,FALSE,N/A,static,,,,FALSE,FALSE,CREATE
+/sitemap.xml,200,FALSE,N/A,static,,,,FALSE,FALSE,IMPROVE
+/privacy-policy,404,FALSE,N/A,static,,,,FALSE,FALSE,CREATE
+/terms,404,FALSE,N/A,static,,,,FALSE,FALSE,CREATE

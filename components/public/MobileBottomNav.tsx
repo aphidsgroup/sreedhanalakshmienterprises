@@ -3,14 +3,20 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Phone, List, ChevronUp } from "lucide-react";
+import { Home, List, ChevronUp } from "lucide-react";
 import WhatsAppIcon from "./WhatsAppIcon";
 import { BUSINESS } from "@/lib/constants";
 
 export default function MobileBottomNav() {
   const pathname = usePathname();
   const [showMenu, setShowMenu] = useState(false);
+  const [prevPath, setPrevPath] = useState(pathname);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  if (pathname !== prevPath) {
+    setPrevPath(pathname);
+    setShowMenu(false);
+  }
 
   // Close dropup when clicking outside
   useEffect(() => {
@@ -27,11 +33,6 @@ export default function MobileBottomNav() {
     }
   }, [showMenu]);
 
-  // Close dropup on route change
-  useEffect(() => {
-    setShowMenu(false);
-  }, [pathname]);
-
   return (
     <>
       {/* Dropup Menu Overlay */}
@@ -45,7 +46,7 @@ export default function MobileBottomNav() {
           className={`absolute bottom-full left-0 right-0 bg-white border-t border-[#e2eaed] rounded-t-2xl shadow-[0_-10px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 origin-bottom ${showMenu ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}`}
         >
           <div className="p-4 space-y-2">
-            <div className="text-xs font-bold text-[#64748b] uppercase tracking-wider mb-2 px-2">Today's Prices</div>
+            <div className="text-xs font-bold text-[#64748b] uppercase tracking-wider mb-2 px-2">Today&apos;s Prices</div>
             {[
               { label: "Cement Price", href: "/today-cement-price" },
               { label: "Steel / TMT Price", href: "/today-steel-price" },

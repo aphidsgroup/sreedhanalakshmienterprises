@@ -205,7 +205,7 @@ export default async function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {CATEGORIES.map((cat) => (
-              <Link key={cat.slug} href={`/products/${cat.slug}`} className="sde-card p-6 group">
+              <Link key={cat.slug} href={`/${cat.supplierSlug}`} className="sde-card p-6 group">
                 <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{cat.icon}</div>
                 <h3 style={{ fontFamily: "Outfit, sans-serif", fontWeight: 700, fontSize: "1.1rem", color: "#1a2129" }}>{cat.name}</h3>
                 <p style={{ fontSize: "0.85rem", color: "#4a5568", marginTop: "0.5rem", lineHeight: 1.6 }}>
@@ -392,34 +392,136 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* LOCAL BUSINESS SCHEMA */}
+      {/* STRUCTURED DATA — Organization + LocalBusiness (both branches) + WebSite */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "Sree Dhanalakshmi Enterprises",
-            description: "Construction material supplier in Chennai since 1980.",
-            email: BUSINESS.email,
-            telephone: "+91" + BUSINESS.branches[0].phone1.replace(/\s/g, ""),
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: BUSINESS.branches[0].address,
-              addressLocality: "Chennai",
-              addressRegion: "Tamil Nadu",
-              postalCode: BUSINESS.branches[0].pincode,
-              addressCountry: "IN",
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://www.sreedhanalakshmienterprises.in/#organization",
+              name: "Sree Dhanalakshmi Enterprises",
+              url: "https://www.sreedhanalakshmienterprises.in",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.sreedhanalakshmienterprises.in/logo.jpeg",
+                width: 200,
+                height: 200,
+              },
+              description: "Construction material supplier in Chennai since 1980. Supplying cement, TMT steel, bricks, sand, aggregates and fabrication materials to contractors, builders and homeowners across Tamil Nadu.",
+              foundingYear: "1980",
+              telephone: "+917305777117",
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+917305777117",
+                contactType: "customer service",
+                areaServed: "IN",
+                availableLanguage: ["Tamil", "English"],
+              },
+              address: [
+                {
+                  "@type": "PostalAddress",
+                  name: "Kilpauk Branch",
+                  streetAddress: "No. 72, Kilpauk Garden Road",
+                  addressLocality: "Kilpauk",
+                  addressRegion: "Tamil Nadu",
+                  postalCode: "600010",
+                  addressCountry: "IN",
+                },
+                {
+                  "@type": "PostalAddress",
+                  name: "Mangadu Branch",
+                  streetAddress: "No. 343, KK Nagar, Kundrathur Main Road",
+                  addressLocality: "Mangadu",
+                  addressRegion: "Tamil Nadu",
+                  postalCode: "600122",
+                  addressCountry: "IN",
+                },
+              ],
+              areaServed: {
+                "@type": "City",
+                name: "Chennai",
+                sameAs: "https://www.wikidata.org/wiki/Q1352",
+              },
             },
-            openingHoursSpecification: {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-              opens: "09:00",
-              closes: "18:00",
+            {
+              "@context": "https://schema.org",
+              "@type": "HardwareStore",
+              "@id": "https://www.sreedhanalakshmienterprises.in/#branch-kilpauk",
+              name: "Sree Dhanalakshmi Enterprises — Kilpauk",
+              url: "https://www.sreedhanalakshmienterprises.in/construction-materials-supplier-in-kilpauk",
+              telephone: "+917305777117",
+              image: "https://www.sreedhanalakshmienterprises.in/logo.jpeg",
+              description: "Construction material supplier in Kilpauk, Chennai. Supplying cement, TMT steel, bricks, M Sand and fabrication materials.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "No. 72, Kilpauk Garden Road",
+                addressLocality: "Kilpauk",
+                addressRegion: "Tamil Nadu",
+                postalCode: "600010",
+                addressCountry: "IN",
+              },
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                opens: "09:00",
+                closes: "18:00",
+              },
+              parentOrganization: {
+                "@id": "https://www.sreedhanalakshmienterprises.in/#organization",
+              },
             },
-          }),
+            {
+              "@context": "https://schema.org",
+              "@type": "HardwareStore",
+              "@id": "https://www.sreedhanalakshmienterprises.in/#branch-mangadu",
+              name: "Sree Dhanalakshmi Enterprises — Mangadu",
+              url: "https://www.sreedhanalakshmienterprises.in/construction-materials-supplier-in-mangadu",
+              telephone: "+917305777117",
+              image: "https://www.sreedhanalakshmienterprises.in/logo.jpeg",
+              description: "Construction material supplier in Mangadu, Chennai. Supplying cement, TMT steel, bricks, M Sand and fabrication materials serving west Chennai.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "No. 343, KK Nagar, Kundrathur Main Road",
+                addressLocality: "Mangadu",
+                addressRegion: "Tamil Nadu",
+                postalCode: "600122",
+                addressCountry: "IN",
+              },
+              openingHoursSpecification: {
+                "@type": "OpeningHoursSpecification",
+                dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+                opens: "09:00",
+                closes: "18:00",
+              },
+              parentOrganization: {
+                "@id": "https://www.sreedhanalakshmienterprises.in/#organization",
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://www.sreedhanalakshmienterprises.in/#website",
+              url: "https://www.sreedhanalakshmienterprises.in",
+              name: "Sree Dhanalakshmi Enterprises",
+              description: "Chennai construction material supplier — cement, steel, bricks, sand, aggregates and fabrication materials.",
+              publisher: {
+                "@id": "https://www.sreedhanalakshmienterprises.in/#organization",
+              },
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://www.sreedhanalakshmienterprises.in/construction-materials-supplier-in-chennai?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            },
+          ]),
         }}
       />
     </>
   );
 }
+

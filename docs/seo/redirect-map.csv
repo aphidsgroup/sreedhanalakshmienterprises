@@ -1,0 +1,8 @@
+source_url,destination_url,redirect_type,status,priority,notes
+/products/cement,/cement-supplier-in-chennai,301,404,CRITICAL,Linked from homepage
+/products/steel,/tmt-steel-supplier-in-chennai,301,404,CRITICAL,Linked from homepage
+/products/bricks-and-blocks,/bricks-supplier-in-chennai,301,404,CRITICAL,Linked from homepage
+/products/sand-and-aggregates,/m-sand-supplier-in-chennai,301,404,CRITICAL,Linked from homepage
+/products/fabrication-materials,/fabrication-materials-supplier-in-chennai,301,404,CRITICAL,Linked from homepage
+/privacy-policy,N/A,N/A,404,HIGH,Needs page created (linked in footer)
+/terms,N/A,N/A,404,HIGH,Needs page created (linked in footer)

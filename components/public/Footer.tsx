@@ -77,8 +77,8 @@ export default function Footer() {
               { label: "Bricks & Blocks", href: "/bricks-supplier-in-chennai" },
               { label: "Fabrication Materials", href: "/fabrication-materials-supplier-in-chennai" },
               { label: "Chennai Hub", href: "/construction-materials-supplier-in-chennai" },
-              { label: "Anna Nagar Branch", href: "/construction-materials-supplier-in-anna-nagar" },
-              { label: "Porur Branch", href: "/construction-materials-supplier-in-porur" },
+              { label: "Anna Nagar Service Area", href: "/construction-materials-supplier-in-anna-nagar" },
+              { label: "Porur Service Area", href: "/construction-materials-supplier-in-porur" },
             ].map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className="hover:text-[#3d9aaf] transition-colors">
