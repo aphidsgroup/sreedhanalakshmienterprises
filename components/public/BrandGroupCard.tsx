@@ -98,8 +98,11 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
               </div>
               <div className="flex-shrink-0">
                 {!isCallForPrice ? (
-                  <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#edf6f8", color: "#2b7a8c" }}>
-                    {priceDisplay}
+                  <span className="flex items-center gap-1">
+                    <span className="text-xs font-bold px-3 py-1.5 rounded" style={{ backgroundColor: "#edf6f8", color: "#2b7a8c" }}>
+                      {priceDisplay}
+                    </span>
+                    <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded" style={{ backgroundColor: "#fff3cd", color: "#856404" }}>+GST</span>
                   </span>
                 ) : (
                   <span className="text-xs font-bold px-3 py-1.5 rounded italic" style={{ backgroundColor: "#f1f1f1", color: "#888888" }}>
@@ -110,6 +113,9 @@ export default function BrandGroupCard({ brandName, categoryName, products, logo
             </div>
           );
         })}
+        <p className="text-[10px] text-[#999] mt-2 pt-2 border-t border-[#f5f5f5]">
+          * Prices are exclusive of GST. Final price with GST and transport will be shared in quotation.
+        </p>
       </div>
 
       {/* Footer Button */}
