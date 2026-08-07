@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 
-const BASE_URL = process.env.NEXTAUTH_URL || "https://sree-enterprises.vercel.app";
+// Always use the canonical production domain — never the Vercel preview URL.
+// NEXTAUTH_URL may be set to sde-enterprises.vercel.app in Vercel env, which would
+// poison every canonical tag on every page. Hardcode the real domain here.
+const BASE_URL = "https://www.sreedhanalakshmienterprises.in";
 
 export function buildMetadata({
   title,
