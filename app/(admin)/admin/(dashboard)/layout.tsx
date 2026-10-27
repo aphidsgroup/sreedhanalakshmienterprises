@@ -7,6 +7,10 @@ import AdminTopBar from "@/components/admin/AdminTopBar";
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
 
+  if (!session?.user) {
+    redirect("/admin/login");
+  }
+
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: "#f0f4f6" }}>
       <AdminSidebar />
