@@ -61,8 +61,7 @@ export async function approveSuggestion(suggestionId: string) {
     })
   ]);
 
-  revalidatePath("/admin/prices");
-  revalidatePath("/");
+  revalidatePricePages();
   return { success: true };
 }
 
@@ -143,8 +142,7 @@ export async function editAndApproveSuggestion(
     })
   ]);
 
-  revalidatePath("/admin/prices");
-  revalidatePath("/");
+  revalidatePricePages();
   return { success: true };
 }
 
@@ -171,8 +169,7 @@ export async function markCallForPrice(productId: string) {
     })
   ]);
 
-  revalidatePath("/admin/prices");
-  revalidatePath("/");
+  revalidatePricePages();
   return { success: true };
 }
 
@@ -238,4 +235,14 @@ export async function importCsv(rows: any[]) {
 
   revalidatePath("/admin/prices");
   return { success: true, count: imported };
+}
+
+function revalidatePricePages() {
+  revalidatePath("/admin/prices");
+  revalidatePath("/");
+  revalidatePath("/today-cement-price");
+  revalidatePath("/today-steel-price");
+  revalidatePath("/today-bricks-and-blocks-price");
+  revalidatePath("/today-sand-and-aggregates-price");
+  revalidatePath("/today-fabrication-materials-price");
 }

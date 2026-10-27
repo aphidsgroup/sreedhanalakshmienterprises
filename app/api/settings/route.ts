@@ -16,10 +16,19 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const setting = await prisma.settings.create({ data: body });
+    const { key, value, label, type } = body;
+
+    const setting = await prisma.settings.create({
+      data: {
+        key: key.toUpperCase().replace(/ /g, "_"),
+        value: String(value || ""),
+        label: label || null,
+        type: type || "text",
+      },
+    });
     return NextResponse.json(setting, { status: 201 });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to create setting:", error);
-    return NextResponse.json({ error: "Failed to create setting" }, { status: 500 });
+    return NextResponse.json({ error: error.message || "Failed to create setting" }, { status: 500 });
   }
 }

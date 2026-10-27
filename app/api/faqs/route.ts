@@ -17,10 +17,21 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const faq = await prisma.fAQ.create({ data: body });
+    const { question, answer, page, sortOrder, isActive, categoryId } = body;
+
+    const faq = await prisma.fAQ.create({
+      data: {
+        question,
+        answer,
+        page: page || "general",
+        sortOrder: Number(sortOrder || 0),
+        isActive: Boolean(isActive ?? true),
+        ...(categoryId ? { category: { connect: { id: categoryId } } } : {}),
+      },
+    });
     return NextResponse.json(faq, { status: 201 });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to create FAQ:", error);
-    return NextResponse.json({ error: "Failed to create FAQ" }, { status: 500 });
+    return NextResponse.json({ error: error.message || "Failed to create FAQ" }, { status: 500 });
   }
 }

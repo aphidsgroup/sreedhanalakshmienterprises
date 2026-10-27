@@ -10,7 +10,24 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const category = await prisma.category.create({ data: body });
-  return NextResponse.json(category, { status: 201 });
+  try {
+    const body = await req.json();
+    const { name, slug, description, icon, imageUrl, sortOrder, isActive } = body;
+
+    const category = await prisma.category.create({
+      data: {
+        name,
+        slug: slug || name.toLowerCase().replace(/ /g, "-"),
+        description: description || null,
+        icon: icon || null,
+        imageUrl: imageUrl || null,
+        sortOrder: Number(sortOrder || 0),
+        isActive: Boolean(isActive ?? true),
+      },
+    });
+    return NextResponse.json(category, { status: 201 });
+  } catch (error: any) {
+    console.error("Failed to create category:", error);
+    return NextResponse.json({ error: error.message || "Failed to create category" }, { status: 500 });
+  }
 }
