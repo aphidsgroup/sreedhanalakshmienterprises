@@ -12,7 +12,8 @@
     "db:studio": "prisma studio",
     "postinstall": "prisma generate",
     "prices:generate": "npx tsx scripts/generate-daily-price-suggestions.ts",
-    "test:e2e": "node scripts/test-dashboard-e2e.js"
+    "test:e2e": "node scripts/test-dashboard-e2e.js",
+    "reset-password": "node scripts/reset-password.js"
   },
   "prisma": {
     "seed": "node prisma/seed.js"

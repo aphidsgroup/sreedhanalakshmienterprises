@@ -18,9 +18,14 @@ export default function AdminTopBar({ user }: Props) {
         <button className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#f0f4f6]">
           <Bell size={16} style={{ color: "#4a5568" }} />
         </button>
-        <div className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold" style={{ background: "#2b7a8c" }}>
+        <Link
+          href="/admin/change-password"
+          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold hover:opacity-90 transition-opacity"
+          style={{ background: "#2b7a8c" }}
+          title="Account Security & Change Password"
+        >
           {user?.name?.[0] || "A"}
-        </div>
+        </Link>
       </div>
     </header>
   );

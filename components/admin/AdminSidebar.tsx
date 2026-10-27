@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Tag, Layers, Package, TrendingUp,
-  FileText, Image, Settings, LogOut, ChevronRight,
+  FileText, Image, Settings, LogOut, ChevronRight, KeyRound,
 } from "lucide-react";
 import { signOut } from "next-auth/react";
 
@@ -17,6 +17,7 @@ const NAV = [
   { label: "Content", href: "/admin/content", icon: FileText },
   { label: "Media", href: "/admin/media", icon: Image },
   { label: "Settings", href: "/admin/settings", icon: Settings },
+  { label: "Change Password", href: "/admin/change-password", icon: KeyRound },
 ];
 
 export default function AdminSidebar() {
