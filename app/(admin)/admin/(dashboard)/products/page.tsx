@@ -12,8 +12,11 @@ interface Product {
   slug: string;
   specification?: string;
   unit: string;
+  priceType?: string;
   currentPrice?: number;
   remarks?: string;
+  stockStatus?: string;
+  isActive?: boolean;
   categoryId: string;
   brandId?: string;
   category: { name: string };
@@ -104,20 +107,33 @@ export default function AdminProductsPage() {
       const url = currentProduct?.id ? `/api/products/${currentProduct.id}` : "/api/products";
       
       const payload = {
-        ...currentProduct,
-        currentPrice: currentProduct?.currentPrice ? Number(currentProduct.currentPrice) : null,
-        displayOrder: Number(currentProduct?.displayOrder || 0),
-        isFeatured: Boolean(currentProduct?.isFeatured),
+        name: currentProduct?.name,
         slug: currentProduct?.slug || currentProduct?.name?.toLowerCase().replace(/ /g, "-"),
+        specification: currentProduct?.specification || "",
+        unit: currentProduct?.unit || "bag",
+        priceType: currentProduct?.priceType || "fixed",
+        currentPrice: currentProduct?.currentPrice !== undefined && currentProduct?.currentPrice !== null ? Number(currentProduct.currentPrice) : null,
+        displayOrder: Number(currentProduct?.displayOrder || 0),
+        remarks: currentProduct?.remarks || "",
+        stockStatus: currentProduct?.stockStatus || "in_stock",
+        categoryId: currentProduct?.categoryId,
+        brandId: currentProduct?.brandId || null,
+        isFeatured: Boolean(currentProduct?.isFeatured),
+        isActive: currentProduct?.isActive ?? true,
         imagePublicId,
         imageSecureUrl
       };
 
-      await fetch(url, {
+      const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to save product.");
+      }
 
       setIsModalOpen(false);
       fetchData();

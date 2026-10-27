@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -54,5 +55,13 @@ export async function POST(req: NextRequest) {
       images: true,
     },
   });
+
+  revalidatePath("/");
+  revalidatePath("/today-cement-price");
+  revalidatePath("/today-steel-price");
+  revalidatePath("/today-bricks-and-blocks-price");
+  revalidatePath("/today-sand-and-aggregates-price");
+  revalidatePath("/today-fabrication-materials-price");
+
   return NextResponse.json(product, { status: 201 });
 }
