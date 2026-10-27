@@ -65,7 +65,7 @@ export default function AdminLoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  placeholder="admin@sde.com"
+                  placeholder="Enter your email"
                   className="w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm outline-none focus:ring-2"
                   style={{ border: "1px solid #e2eaed", background: "#f9fafb" }}
                 />
@@ -96,10 +96,6 @@ export default function AdminLoginPage() {
               {loading ? "Signing in..." : "Sign In"}
             </button>
           </form>
-
-          <p className="text-center mt-6 text-xs" style={{ color: "#94a3b8" }}>
-            Default: admin@sde.com / Admin@1234 — Change after first login.
-          </p>
         </div>
       </div>
     </div>
